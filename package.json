@@ -1,5 +1,5 @@
 {
-    "name": "utils",
+    "name": "component.container",
     "description": "common modules, algorithms and general functions",
     "version": "1.0.0",
     "author": "Marchuan Van Der Merwe",
@@ -11,8 +11,9 @@
         "npm": "9.5.1"
     },
     "keywords": [
-        "utilities",
-        "utils"
+        "schema",
+        "interface",
+        "container"
     ],
     "files": [
         "lib"
@@ -22,14 +23,13 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/marchuanv/utils.git"
+        "url": "git+https://github.com/marchuanv/component.container.git"
     },
     "bugs": {
-        "url": "https://github.com/marchuanv/utils/issues"
+        "url": "https://github.com/marchuanv/component.container/issues"
     },
-    "homepage": "https://github.com/marchuanv/utils#readme",
+    "homepage": "https://github.com/marchuanv/component.container#readme",
     "dependencies": {
-        "jasmine": "^5.1.0",
-        "@hyperjump/json-schema": "^1.6.5"
+        "utils": "marchuanv/utils"
     }
 }
