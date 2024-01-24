@@ -2,7 +2,7 @@ import { walkDir } from 'utils';
 import { GenericType } from './lib/generic.type.mjs';
 import { MemberParameter } from './lib/member.parameter.mjs';
 import { TypeDefinition } from './lib/type.definition.mjs';
-export { GUID, Specs, VERBOSE, addSchema, existsSync, extname, fileURLToPath, join, readFileSync, validateSchema } from 'utils';
+export { GUID, Specs, VERBOSE, existsSync, extname, fileURLToPath, join, readFileSync, registerSchema, validateSchema } from 'utils';
 export { ClassIntegrity } from './lib/class.integrity.mjs';
 export { ClassInterface } from './lib/class.interface.mjs';
 export { ClassInterfaceRegister } from './lib/class.interface.register.mjs';

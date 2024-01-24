@@ -5,7 +5,7 @@ import {
     Dog, Food,
 } from './index.mjs';
 describe('when deserialising the Dog class given correct json data', () => {
-    fit('should deserialise without error', async () => {
+    it('should deserialise without error', async () => {
         let error = null;
         let serialisedDogStr = '';
         let dogInstance = null;
@@ -33,7 +33,9 @@ describe('when deserialising the Dog class given incorrect json data', () => {
             food: {
                 name: "epol",
                 awdawdisAdultFood: true
-            }
+            },
+            type: 'dog',
+            vaccinationYears: "test"
         });
         try {
             await Container.deserialise(serialisedDogStr, Dog);
