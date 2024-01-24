@@ -1,25 +1,25 @@
 {
     "className": "Dog",
-    "Id": "5f5cbdee-c26d-424f-a344-915b969bb090",
+    "Id": "0474d82f-5d62-481a-a920-0cd2f71dac81",
     "scriptFilePath": "C:\\github\\component.container\\specs\\classes\\dog.mjs",
     "dependencies": [
         {
-            "Id": "490dfa24-f6b4-479d-a534-4971c8388b01",
+            "Id": "485cde7e-1328-43b1-a893-6cd9e0f3c2ee",
             "isExtend": true
         },
         {
-            "Id": "ca809b56-3f27-4290-afc7-681bc6ad53be",
+            "Id": "b8cc33cb-26ed-45c5-8794-861823f53a0f",
             "isExtend": false
         }
     ],
     "ctor": {
-        "Id": "123200ad-5186-4e0f-b865-e0db97db2960",
+        "Id": "727ed5bc-037d-43e5-a0cf-592a959fdb4d",
         "name": "constructor",
         "isCtor": true,
         "isStatic": false,
         "convertToArray": false,
         "typeDefinition": {
-            "Id": "5f5cbdee-c26d-424f-a344-915b969bb090",
+            "Id": "0474d82f-5d62-481a-a920-0cd2f71dac81",
             "name": "dog",
             "typeName": "Dog",
             "isReferenceType": true,
@@ -27,7 +27,7 @@
         },
         "parameters": [
             {
-                "Id": "0fe65475-399a-4c4a-b3ed-9c6ff381d0f9",
+                "Id": "42e2e667-fea9-49bf-af61-fce8ac4dd99b",
                 "name": "name",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -39,7 +39,7 @@
                 }
             },
             {
-                "Id": "7fda47ae-70f3-40b9-876a-80120a7c3359",
+                "Id": "ae93a63d-a42c-49f0-aac8-1e503d6c6e5d",
                 "name": "age",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -51,7 +51,7 @@
                 }
             },
             {
-                "Id": "7fd8f7c4-b0d7-48dc-ac01-dde104471712",
+                "Id": "4080118d-cc80-4467-b06f-9662d87baa51",
                 "name": "weight",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -63,11 +63,11 @@
                 }
             },
             {
-                "Id": "9725df9b-f32f-4ee7-9201-839c05fd5204",
+                "Id": "bf28abcb-57bb-49e9-af5d-8dbc6c0a87b0",
                 "name": "food",
                 "convertToArray": false,
                 "typeDefinition": {
-                    "Id": "ca809b56-3f27-4290-afc7-681bc6ad53be",
+                    "Id": "b8cc33cb-26ed-45c5-8794-861823f53a0f",
                     "name": "food",
                     "typeName": "Food",
                     "isReferenceType": true,
@@ -75,14 +75,14 @@
                 }
             },
             {
-                "Id": "fccc1c87-4796-4264-890e-f94e05f774f1",
+                "Id": "e220a7c1-1be9-42b8-b96f-a1e870c874c6",
                 "name": "vaccinationYears",
                 "convertToArray": true,
                 "typeDefinition": {
-                    "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
-                    "name": "string",
-                    "typeName": "String",
-                    "isReferenceType": false,
+                    "Id": "d789b720-a84c-4b68-bedd-dd4fc5c5be20",
+                    "name": "array",
+                    "typeName": "Array",
+                    "isReferenceType": true,
                     "isNative": true
                 }
             }
@@ -90,7 +90,7 @@
     },
     "methods": [
         {
-            "Id": "f105f872-7976-4308-89d0-6795466de664",
+            "Id": "e2b1ac29-19e2-48c2-8201-4fca2792a7af",
             "name": "walk",
             "isCtor": false,
             "isStatic": false,
@@ -104,7 +104,7 @@
             },
             "parameters": [
                 {
-                    "Id": "50feffc1-5b93-42e7-ae50-f487df5548fb",
+                    "Id": "adeec06a-289a-41a3-933d-713b3a4dade9",
                     "name": "meters",
                     "convertToArray": false,
                     "typeDefinition": {
@@ -118,7 +118,7 @@
             ]
         },
         {
-            "Id": "5c935893-119e-49ce-b53b-c75e48ed4f5a",
+            "Id": "0e1bd6ca-cb31-4979-bf0b-190086c5f664",
             "name": "isExhausted",
             "isCtor": false,
             "isStatic": false,
@@ -135,7 +135,7 @@
     ],
     "properties": [
         {
-            "Id": "2c131592-4700-4eb7-bf4d-688a35e64796",
+            "Id": "98d48057-ec93-4526-b573-b06a75015ff1",
             "name": "name",
             "isGetter": true,
             "isSetter": true,
@@ -150,7 +150,7 @@
             },
             "parameters": [
                 {
-                    "Id": "4a81472b-8a6a-4d19-b681-740bba6e26f0",
+                    "Id": "9c957244-5702-439e-9d32-29567b604725",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
@@ -164,7 +164,7 @@
             ]
         },
         {
-            "Id": "65031830-9141-488d-96e5-61acfef2239a",
+            "Id": "d30a9227-0c6e-4695-a8e7-f298b9d93ed8",
             "name": "age",
             "isGetter": true,
             "isSetter": true,
@@ -179,7 +179,7 @@
             },
             "parameters": [
                 {
-                    "Id": "35923f3c-a590-4fb6-942c-f72f205f2529",
+                    "Id": "76ac8ed9-df40-44b1-922a-a03f8e5c98ae",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
@@ -193,7 +193,7 @@
             ]
         },
         {
-            "Id": "216ea9f1-2c04-43af-ad4f-a6df6d3cd339",
+            "Id": "5cb48424-8bb2-4af6-b26e-783837575c26",
             "name": "weight",
             "isGetter": true,
             "isSetter": true,
@@ -208,7 +208,7 @@
             },
             "parameters": [
                 {
-                    "Id": "b52427d2-8a0a-4abe-86ae-92883eebe2f8",
+                    "Id": "be8498ff-c50b-424b-b1af-1a6df660ab8b",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
@@ -222,14 +222,14 @@
             ]
         },
         {
-            "Id": "df1bd2d6-6846-4a79-9b83-98270b72130a",
+            "Id": "af6197df-7ce1-4a97-8775-6d55d392df0d",
             "name": "food",
             "isGetter": true,
             "isSetter": true,
             "isStatic": false,
             "convertToArray": false,
             "typeDefinition": {
-                "Id": "ca809b56-3f27-4290-afc7-681bc6ad53be",
+                "Id": "b8cc33cb-26ed-45c5-8794-861823f53a0f",
                 "name": "food",
                 "typeName": "Food",
                 "isReferenceType": true,
@@ -237,11 +237,11 @@
             },
             "parameters": [
                 {
-                    "Id": "9e65e6fa-60d0-4fd7-b08f-a27fc3fcb2eb",
+                    "Id": "33a9ad0c-1aa9-4c59-b872-b44483e3cc89",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
-                        "Id": "ca809b56-3f27-4290-afc7-681bc6ad53be",
+                        "Id": "b8cc33cb-26ed-45c5-8794-861823f53a0f",
                         "name": "food",
                         "typeName": "Food",
                         "isReferenceType": true,

@@ -21,7 +21,7 @@ export class Animal extends Container {
             new MemberParameter({ weight }, Number),
             new MemberParameter({ food }, Food),
             new MemberParameter({ type }, String),
-            new MemberParameter({ vaccinationYears }, Array)
+            new MemberParameter({ vaccinationYears }, String, true)
         ]);
     }
     /**
