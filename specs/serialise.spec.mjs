@@ -5,7 +5,7 @@ import {
     Dog, DogCtorArgs, Food, FoodCtorArgs,
 } from './index.mjs';
 describe('when deserialising the Dog class given an instance of dog ctor args', () => {
-    fit('should deserialise without error', async () => {
+    it('should deserialise without error', async () => {
         let error = null;
         let serialisedDogStr = '';
         let dogInstance = null;
@@ -19,12 +19,13 @@ describe('when deserialising the Dog class given an instance of dog ctor args', 
         dogArgs.name = 'lassy';
         dogArgs.food = new Food(foodArgs);
         dogArgs.type = 'dog';
+        dogArgs.weight = 24;
         dogArgs.vaccinationYears = ['2010', '2011', '2012'];
 
         const dog = new Dog(dogArgs);
         try {
             serialisedDogStr = await dog.serialise();
-            dogInstance = await Container.deserialise(serialisedDogStr, Dog);
+            dogInstance = await Container.deserialise(serialisedDogStr, Dog, DogCtorArgs);
         } catch (err) {
             error = err;
             console.error(error);
@@ -50,7 +51,7 @@ describe('when deserialising the Dog class given incorrect json data', () => {
             vaccinationYears: "test"
         });
         try {
-            await Container.deserialise(serialisedDogStr, Dog);
+            await Container.deserialise(serialisedDogStr, Dog, DogCtorArgs);
         } catch (err) {
             error = err;
             console.error(error);
