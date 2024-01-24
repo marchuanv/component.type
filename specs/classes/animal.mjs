@@ -12,14 +12,16 @@ export class Animal extends Container {
      * @param { Number } weight
      * @param { Food } food
      * @param { String } type
+     * @param { Array<String> } vaccinationYears
     */
-    constructor(name, age, weight, food, type) {
+    constructor(name, age, weight, food, type, vaccinationYears) {
         super([
             new MemberParameter({ name }, String),
             new MemberParameter({ age }, Number),
             new MemberParameter({ weight }, Number),
             new MemberParameter({ food }, Food),
-            new MemberParameter({ type }, String)
+            new MemberParameter({ type }, String),
+            new MemberParameter({ vaccinationYears }, Array)
         ]);
     }
     /**
@@ -33,5 +35,11 @@ export class Animal extends Container {
     */
     set type(value) {
         super.set({ type: value });
+    }
+    /**
+     * @returns { Array<String> }
+    */
+    get vaccinationYears() {
+        return super.get({ vaccinationYears: null });
     }
 }

@@ -7,9 +7,10 @@ export class Dog extends Animal {
      * @param { Number } age
      * @param { Number } weight
      * @param { Food } food
+     * @param { Array<String> } vaccinationYears
     */
-    constructor(name, age, weight, food) {
-        super(name, age, weight, food);
+    constructor(name, age, weight, food, vaccinationYears = ['2020', '2021', '2022']) {
+        super(name, age, weight, food, vaccinationYears);
     }
     /**
      * @returns { String }
@@ -58,5 +59,12 @@ export class Dog extends Animal {
     */
     set food(value) {
         super.set({ food: value });
+    }
+    /**
+     * @param { Number } meters
+     * @returns { Boolean }
+    */
+    walk(meters) {
+
     }
 }
