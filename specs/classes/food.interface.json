@@ -1,16 +1,15 @@
 {
     "className": "Food",
-    "Id": "b8cc33cb-26ed-45c5-8794-861823f53a0f",
+    "Id": "5dcc6de0-8717-4296-8060-74ed4a1f7354",
     "scriptFilePath": "C:\\github\\component.container\\specs\\classes\\food.mjs",
     "dependencies": [],
     "ctor": {
-        "Id": "f415b01c-84b5-40d2-abb7-e3d96cc6e3fe",
+        "Id": "16c9848c-5465-4c3a-a13a-303f793c547e",
         "name": "constructor",
         "isCtor": true,
         "isStatic": false,
-        "convertToArray": false,
         "typeDefinition": {
-            "Id": "b8cc33cb-26ed-45c5-8794-861823f53a0f",
+            "Id": "5dcc6de0-8717-4296-8060-74ed4a1f7354",
             "name": "food",
             "typeName": "Food",
             "isReferenceType": true,
@@ -18,9 +17,8 @@
         },
         "parameters": [
             {
-                "Id": "b305b804-2f25-4a39-b57a-cfbc4e1b5915",
+                "Id": "251e030f-6aa3-47e3-93d9-858652662600",
                 "name": "name",
-                "convertToArray": false,
                 "typeDefinition": {
                     "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                     "name": "string",
@@ -30,9 +28,8 @@
                 }
             },
             {
-                "Id": "995082ab-b09b-47b0-8226-1691eae53608",
+                "Id": "6c868496-7463-4d3c-b2f7-efeb248261e1",
                 "name": "isAdultFood",
-                "convertToArray": false,
                 "typeDefinition": {
                     "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
                     "name": "boolean",
@@ -46,12 +43,11 @@
     "methods": [],
     "properties": [
         {
-            "Id": "f1f5d2b2-f6b2-41e1-888a-965b3046d090",
+            "Id": "4c4994d6-3dc9-44cb-ae0c-25a93407bc6c",
             "name": "name",
             "isGetter": true,
             "isSetter": true,
             "isStatic": false,
-            "convertToArray": false,
             "typeDefinition": {
                 "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                 "name": "string",
@@ -61,9 +57,8 @@
             },
             "parameters": [
                 {
-                    "Id": "fb5a875f-2629-47b5-9565-c361ce8a3134",
+                    "Id": "a02787c7-4771-47e3-829d-17449a8cce36",
                     "name": "value",
-                    "convertToArray": false,
                     "typeDefinition": {
                         "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                         "name": "string",
@@ -75,12 +70,11 @@
             ]
         },
         {
-            "Id": "955ff7bf-5e92-47a9-8d3a-42b2890c2485",
+            "Id": "0a05b43a-4fdc-45ec-91af-6fc746e3a1a7",
             "name": "isAdultFood",
             "isGetter": true,
             "isSetter": true,
             "isStatic": false,
-            "convertToArray": false,
             "typeDefinition": {
                 "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
                 "name": "boolean",
@@ -90,9 +84,8 @@
             },
             "parameters": [
                 {
-                    "Id": "5acdbf4e-f301-41c7-8007-3c31d2a26b57",
+                    "Id": "1ec6c7da-55ca-40bf-8582-25c4667214ea",
                     "name": "value",
-                    "convertToArray": false,
                     "typeDefinition": {
                         "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
                         "name": "boolean",

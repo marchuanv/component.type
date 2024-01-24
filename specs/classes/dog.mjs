@@ -7,6 +7,7 @@ export class Dog extends Animal {
      * @param { Number } age
      * @param { Number } weight
      * @param { Food } food
+     * @param { String } type
      * @param { Array<String> } vaccinationYears
     */
     constructor(name, age, weight, food, type, vaccinationYears = ['2020', '2021', '2022']) {

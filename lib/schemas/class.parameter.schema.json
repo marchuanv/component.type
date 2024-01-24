@@ -10,9 +10,6 @@
         "name": {
             "type": "string"
         },
-        "convertToArray": {
-            "type": "boolean"
-        },
         "typeDefinition": {
             "$ref": "https://540885dc317a40e5b7b0e4549b37dff6/typedefinition"
         }
@@ -20,7 +17,6 @@
     "required": [
         "Id",
         "name",
-        "typeDefinition",
-        "convertToArray"
+        "typeDefinition"
     ]
 }
