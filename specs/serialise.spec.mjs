@@ -2,14 +2,26 @@ import {
     Container,
 } from "../registry.mjs";
 import {
-    Dog, Food,
+    Dog, DogCtorArgs, Food, FoodCtorArgs,
 } from './index.mjs';
-describe('when deserialising the Dog class given correct json data', () => {
-    it('should deserialise without error', async () => {
+describe('when deserialising the Dog class given an instance of dog ctor args', () => {
+    fit('should deserialise without error', async () => {
         let error = null;
         let serialisedDogStr = '';
         let dogInstance = null;
-        const dog = new Dog('lassy', 12, 24, new Food('epol', true), 'dog');
+
+        const foodArgs = new FoodCtorArgs();
+        foodArgs.isAdultFood = true;
+        foodArgs.name = 'epol';
+
+        const dogArgs = new DogCtorArgs();
+        dogArgs.age = 12;
+        dogArgs.name = 'lassy';
+        dogArgs.food = new Food(foodArgs);
+        dogArgs.type = 'dog';
+        dogArgs.vaccinationYears = ['2010', '2011', '2012'];
+
+        const dog = new Dog(dogArgs);
         try {
             serialisedDogStr = await dog.serialise();
             dogInstance = await Container.deserialise(serialisedDogStr, Dog);

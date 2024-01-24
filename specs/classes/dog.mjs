@@ -1,17 +1,15 @@
 import {
-    Animal, Food,
+    Animal,
+    AnimalCtorArgs,
+    Food
 } from '../index.mjs';
+export class DogCtorArgs extends AnimalCtorArgs { }
 export class Dog extends Animal {
     /**
-     * @param { String } name
-     * @param { Number } age
-     * @param { Number } weight
-     * @param { Food } food
-     * @param { String } type
-     * @param { Array<String> } vaccinationYears
+     * @param { DogCtorArgs } dogArgs
     */
-    constructor(name, age, weight, food, type, vaccinationYears = ['2020', '2021', '2022']) {
-        super(name, age, weight, food, type, vaccinationYears);
+    constructor(dogArgs) {
+        super(dogArgs);
     }
     /**
      * @returns { String }
