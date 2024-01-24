@@ -1,19 +1,20 @@
 {
     "className": "Animal",
-    "Id": "ded15aea-7c43-4abd-ba0f-5c94ccae8ee1",
+    "Id": "03d76f85-4613-4e4b-9c2d-af39969ae9a7",
     "scriptFilePath": "C:\\github\\component.container\\specs\\classes\\animal.mjs",
     "dependencies": [
         {
-            "Id": "f8d81b0b-953b-4335-9a93-3144911cf610"
+            "Id": "24c2c231-bd69-4820-a8ca-ac8e91ed31a8"
         }
     ],
     "ctor": {
-        "Id": "ca1e443a-2c8d-43f6-b02c-a4b08d43399e",
+        "Id": "4a8c3989-8d13-43b2-a6fa-ed5a76f9acd9",
         "name": "constructor",
         "isCtor": true,
         "isStatic": false,
+        "convertToArray": false,
         "typeDefinition": {
-            "Id": "ded15aea-7c43-4abd-ba0f-5c94ccae8ee1",
+            "Id": "03d76f85-4613-4e4b-9c2d-af39969ae9a7",
             "name": "animal",
             "typeName": "Animal",
             "isArray": false,
@@ -22,7 +23,7 @@
         },
         "parameters": [
             {
-                "Id": "c25b17ad-2f82-487d-8492-13199fa71089",
+                "Id": "a9550f07-61ba-41de-ae22-fb0b5042b24b",
                 "name": "name",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -35,7 +36,7 @@
                 }
             },
             {
-                "Id": "a1f10477-1494-4658-a0b3-8583edfdf469",
+                "Id": "bc30dd51-1da3-4dd7-8a5b-c44af714a3c3",
                 "name": "age",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -48,7 +49,7 @@
                 }
             },
             {
-                "Id": "0f37888f-1f33-45f5-8c0a-46148c7ec696",
+                "Id": "62bd08f4-71fa-455c-a2d7-a56968f51147",
                 "name": "weight",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -61,11 +62,11 @@
                 }
             },
             {
-                "Id": "13c91be9-def4-46bc-b1cd-2326bc8bcd59",
+                "Id": "7bb7c0e7-a71f-49a3-9242-4924e6b7ddfd",
                 "name": "food",
                 "convertToArray": false,
                 "typeDefinition": {
-                    "Id": "f8d81b0b-953b-4335-9a93-3144911cf610",
+                    "Id": "24c2c231-bd69-4820-a8ca-ac8e91ed31a8",
                     "name": "food",
                     "typeName": "Food",
                     "isArray": false,
@@ -74,7 +75,7 @@
                 }
             },
             {
-                "Id": "51c98ab0-9d83-4745-a975-0db18493a381",
+                "Id": "b28c1d11-5794-4829-a166-f5d5930fc979",
                 "name": "type",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -87,7 +88,7 @@
                 }
             },
             {
-                "Id": "e2f03342-f57b-43bb-bbe0-c8dea7f13303",
+                "Id": "b761a28a-2076-480e-ab6e-13d75e831ac1",
                 "name": "vaccinationYears",
                 "convertToArray": true,
                 "typeDefinition": {
@@ -104,7 +105,7 @@
     "methods": [],
     "properties": [
         {
-            "Id": "953b6593-80dd-4c32-8cbf-c0ed749c0f4d",
+            "Id": "ca25f27e-7e34-48c5-8fb8-4d1cc38d1a52",
             "name": "type",
             "isGetter": true,
             "isSetter": true,
@@ -120,7 +121,7 @@
             },
             "parameters": [
                 {
-                    "Id": "9c6f3347-f5b1-4725-a48f-2e3b9c013de8",
+                    "Id": "4da06222-79ad-47d0-8435-e205515c99e4",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
@@ -135,7 +136,7 @@
             ]
         },
         {
-            "Id": "f4689822-0dce-43fa-9420-44bdd0fa87ac",
+            "Id": "281bb9cd-58b3-4544-9005-ac3a3a2ca0d7",
             "name": "vaccinationYears",
             "isGetter": true,
             "isSetter": false,
