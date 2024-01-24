@@ -2,7 +2,6 @@
     "Id": "70bc3030-8882-4e57-86bc-6dc327c64253",
     "name": "T",
     "typeName": "T",
-    "isArray": false,
-    "isReferenceType": false,
-    "isObject": false
+    "isReferenceType": true,
+    "isNative": false
 }

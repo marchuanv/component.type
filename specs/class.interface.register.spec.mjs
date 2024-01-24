@@ -10,7 +10,7 @@ import {
 const currentDir = fileURLToPath(new URL('./', import.meta.url));
 const scriptsDirPath = join(currentDir, 'classes');
 describe('when registering and generating the Dog class inteface', () => {
-    fit('should generate', async () => {
+    it('should generate', async () => {
         await ClassInterfaceRegister.register([{
             scriptsDirPath,
             scriptFileName: 'food.mjs',

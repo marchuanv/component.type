@@ -9,8 +9,7 @@ export { ClassInterfaceRegister } from './lib/class.interface.register.mjs';
 export { Container } from './lib/container.mjs';
 export { Member } from './lib/member.mjs';
 export { MethodMember } from './lib/method.member.mjs';
-export { PrimitiveType } from './lib/primitivetype.mjs';
 export { PropertyMember } from './lib/property.member.mjs';
-export { ReferenceType } from './lib/referencetype.mjs';
 export { Schema } from './lib/schema.mjs';
 export { GenericType, MemberParameter, TypeDefinition, walkDir };
+

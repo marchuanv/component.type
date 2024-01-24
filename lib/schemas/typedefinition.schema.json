@@ -13,13 +13,10 @@
         "typeName": {
             "type": "string"
         },
-        "isArray": {
-            "type": "boolean"
-        },
         "isReferenceType": {
             "type": "boolean"
         },
-        "isObject": {
+        "isNative": {
             "type": "boolean"
         }
     },
@@ -27,8 +24,7 @@
         "Id",
         "name",
         "typeName",
-        "isArray",
         "isReferenceType",
-        "isObject"
+        "isNative"
     ]
 }

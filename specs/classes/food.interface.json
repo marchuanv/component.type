@@ -1,47 +1,44 @@
 {
     "className": "Food",
-    "Id": "125a57d7-7567-4826-a903-cadbd012dd0e",
+    "Id": "08c498fd-8dab-429b-acac-56d15c4ce602",
     "scriptFilePath": "C:\\github\\component.container\\specs\\classes\\food.mjs",
     "dependencies": [],
     "ctor": {
-        "Id": "4e0aac60-31c0-475b-9fa4-74b34f5c01aa",
+        "Id": "36db7196-ce9e-4102-9538-c5cd6c9aaf9e",
         "name": "constructor",
         "isCtor": true,
         "isStatic": false,
         "convertToArray": false,
         "typeDefinition": {
-            "Id": "125a57d7-7567-4826-a903-cadbd012dd0e",
+            "Id": "08c498fd-8dab-429b-acac-56d15c4ce602",
             "name": "food",
             "typeName": "Food",
-            "isArray": false,
             "isReferenceType": true,
-            "isObject": false
+            "isNative": false
         },
         "parameters": [
             {
-                "Id": "570c8ac7-99ba-432a-a381-c2e4348d9aae",
+                "Id": "096aced8-decd-4477-a03e-43260eb1227f",
                 "name": "name",
                 "convertToArray": false,
                 "typeDefinition": {
                     "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                     "name": "string",
                     "typeName": "String",
-                    "isArray": false,
                     "isReferenceType": false,
-                    "isObject": false
+                    "isNative": true
                 }
             },
             {
-                "Id": "fe0088fa-172b-4635-a919-95f04668f37d",
+                "Id": "0b7b91ec-5101-469b-bc3c-f073298ca193",
                 "name": "isAdultFood",
                 "convertToArray": false,
                 "typeDefinition": {
                     "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
                     "name": "boolean",
                     "typeName": "Boolean",
-                    "isArray": false,
                     "isReferenceType": false,
-                    "isObject": false
+                    "isNative": true
                 }
             }
         ]
@@ -49,7 +46,7 @@
     "methods": [],
     "properties": [
         {
-            "Id": "47f14630-a193-4c79-8f9d-a77ade6b58d8",
+            "Id": "4b8d504f-47a9-457e-a813-2db0d130564e",
             "name": "name",
             "isGetter": true,
             "isSetter": true,
@@ -59,28 +56,26 @@
                 "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                 "name": "string",
                 "typeName": "String",
-                "isArray": false,
                 "isReferenceType": false,
-                "isObject": false
+                "isNative": true
             },
             "parameters": [
                 {
-                    "Id": "e86a8198-c8d3-41a3-b1d3-afdec640bde3",
+                    "Id": "2afc5ae5-6a5e-421f-8dae-e15dd7f68c5f",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
                         "Id": "68c86ae1-f150-41d2-a01e-7bb439ec6e29",
                         "name": "string",
                         "typeName": "String",
-                        "isArray": false,
                         "isReferenceType": false,
-                        "isObject": false
+                        "isNative": true
                     }
                 }
             ]
         },
         {
-            "Id": "0a51c9c5-3f05-4ca0-b05f-abc662397b84",
+            "Id": "c2c241d7-1433-4baa-b010-b0fa523e9b1a",
             "name": "isAdultFood",
             "isGetter": true,
             "isSetter": true,
@@ -90,22 +85,20 @@
                 "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
                 "name": "boolean",
                 "typeName": "Boolean",
-                "isArray": false,
                 "isReferenceType": false,
-                "isObject": false
+                "isNative": true
             },
             "parameters": [
                 {
-                    "Id": "58210003-bad4-45f4-8780-2fde02395809",
+                    "Id": "72876a7c-3850-40bb-b619-7df2d36eba34",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
                         "Id": "4be60aad-142f-49f4-b690-3d2ab7483bf5",
                         "name": "boolean",
                         "typeName": "Boolean",
-                        "isArray": false,
                         "isReferenceType": false,
-                        "isObject": false
+                        "isNative": true
                     }
                 }
             ]

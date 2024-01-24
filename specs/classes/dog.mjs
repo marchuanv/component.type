@@ -62,9 +62,14 @@ export class Dog extends Animal {
     }
     /**
      * @param { Number } meters
-     * @returns { Boolean }
     */
     walk(meters) {
+
+    }
+    /**
+     * @returns { Boolean }
+    */
+    isExhausted() {
 
     }
 }

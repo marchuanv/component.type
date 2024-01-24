@@ -6,9 +6,13 @@
     "properties": {
         "Id": {
             "type": "string"
+        },
+        "isExtend": {
+            "type": "boolean"
         }
     },
     "required": [
-        "Id"
+        "Id",
+        "isExtend"
     ]
 }
