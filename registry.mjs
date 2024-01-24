@@ -1,4 +1,5 @@
 import { walkDir } from 'utils';
+import { GenericType } from './lib/generic.type.mjs';
 import { MemberParameter } from './lib/member.parameter.mjs';
 import { TypeDefinition } from './lib/type.definition.mjs';
 export { GUID, Specs, VERBOSE, addSchema, existsSync, extname, fileURLToPath, join, readFileSync, validateSchema } from 'utils';
@@ -12,5 +13,4 @@ export { PrimitiveType } from './lib/primitivetype.mjs';
 export { PropertyMember } from './lib/property.member.mjs';
 export { ReferenceType } from './lib/referencetype.mjs';
 export { Schema } from './lib/schema.mjs';
-export { MemberParameter, TypeDefinition, walkDir };
-
+export { GenericType, MemberParameter, TypeDefinition, walkDir };

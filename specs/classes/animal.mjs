@@ -42,4 +42,11 @@ export class Animal extends Container {
     get vaccinationYears() {
         return super.get({ vaccinationYears: null });
     }
+    /**
+     * @template T
+     * @param { T } type
+     * @returns { T }
+    */
+    animalType(type) {
+    }
 }

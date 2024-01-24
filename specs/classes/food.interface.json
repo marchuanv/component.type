@@ -1,16 +1,16 @@
 {
     "className": "Food",
-    "Id": "4ed525eb-087e-4832-acc4-2d663ef229ca",
+    "Id": "125a57d7-7567-4826-a903-cadbd012dd0e",
     "scriptFilePath": "C:\\github\\component.container\\specs\\classes\\food.mjs",
     "dependencies": [],
     "ctor": {
-        "Id": "7daadb7b-e58a-4d5c-b646-be89e5c2b431",
+        "Id": "4e0aac60-31c0-475b-9fa4-74b34f5c01aa",
         "name": "constructor",
         "isCtor": true,
         "isStatic": false,
         "convertToArray": false,
         "typeDefinition": {
-            "Id": "4ed525eb-087e-4832-acc4-2d663ef229ca",
+            "Id": "125a57d7-7567-4826-a903-cadbd012dd0e",
             "name": "food",
             "typeName": "Food",
             "isArray": false,
@@ -19,7 +19,7 @@
         },
         "parameters": [
             {
-                "Id": "005053f4-f485-4e28-80d6-eebe69c87e34",
+                "Id": "570c8ac7-99ba-432a-a381-c2e4348d9aae",
                 "name": "name",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -32,7 +32,7 @@
                 }
             },
             {
-                "Id": "9e009c1d-6a58-4899-9c66-2dfd1fe623be",
+                "Id": "fe0088fa-172b-4635-a919-95f04668f37d",
                 "name": "isAdultFood",
                 "convertToArray": false,
                 "typeDefinition": {
@@ -49,7 +49,7 @@
     "methods": [],
     "properties": [
         {
-            "Id": "801ca18d-836d-4a12-b9c4-29c1caa74841",
+            "Id": "47f14630-a193-4c79-8f9d-a77ade6b58d8",
             "name": "name",
             "isGetter": true,
             "isSetter": true,
@@ -65,7 +65,7 @@
             },
             "parameters": [
                 {
-                    "Id": "f9a5f5c4-ad22-43ab-b765-93155b944360",
+                    "Id": "e86a8198-c8d3-41a3-b1d3-afdec640bde3",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
@@ -80,7 +80,7 @@
             ]
         },
         {
-            "Id": "c55918fe-5e1c-4305-9303-5d71b0ad5afe",
+            "Id": "0a51c9c5-3f05-4ca0-b05f-abc662397b84",
             "name": "isAdultFood",
             "isGetter": true,
             "isSetter": true,
@@ -96,7 +96,7 @@
             },
             "parameters": [
                 {
-                    "Id": "8e6ba7ae-e6ff-4df7-b75d-8f4e459b0395",
+                    "Id": "58210003-bad4-45f4-8780-2fde02395809",
                     "name": "value",
                     "convertToArray": false,
                     "typeDefinition": {
