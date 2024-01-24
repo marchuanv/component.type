@@ -9,25 +9,18 @@ describe('when mapping types', () => {
             expect(foundByName).toBeDefined();
             expect(foundByClass).not.toBeNull();
             expect(foundByName).not.toBeNull();
-            expect(foundByClass.isObject).toBeFalse();
-            expect(foundByName.isObject).toBeFalse();
+            expect(foundByClass.isNative).toBeFalse();
+            expect(foundByName.isReferenceType).toBeTrue();
         }
     });
     it('should register a class as an array', () => {
-
         const foundByClass = TypeDefinition.find({ type: Array });
         const foundByName = TypeDefinition.find({ typeName: Array.name });
-
         expect(foundByClass).toBeDefined();
         expect(foundByName).toBeDefined();
-
         expect(foundByClass).not.toBeNull();
         expect(foundByName).not.toBeNull();
-
-        expect(foundByClass.isObject).toBeFalse();
-        expect(foundByName.isObject).toBeFalse();
-
-        expect(foundByClass.isArray).toBeTrue();
-        expect(foundByName.isArray).toBeTrue();
+        expect(foundByClass.isNative).toBeTrue();
+        expect(foundByName.isReferenceType).toBeTrue();
     });
 });
