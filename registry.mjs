@@ -7,7 +7,7 @@ export { ClassIntegrity } from './lib/class.integrity.mjs';
 export { ClassInterface } from './lib/class.interface.mjs';
 export { ClassInterfaceRegister } from './lib/class.interface.register.mjs';
 export { Container } from './lib/container.mjs';
-export { CtorArgs } from './lib/ctor.args.mjs';
+export { CtorArgs, CtorArgsRegistry } from './lib/ctor.args.mjs';
 export { Member } from './lib/member.mjs';
 export { MethodMember } from './lib/method.member.mjs';
 export { PropertyMember } from './lib/property.member.mjs';
