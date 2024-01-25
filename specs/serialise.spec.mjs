@@ -33,6 +33,7 @@ describe('when deserialising the Dog class given an instance of dog ctor args', 
         expect(error).toBeNull();
         expect(dogInstance).not.toBeNull();
         expect(dogInstance).toBeInstanceOf(Dog);
+        expect(dogInstance.food).toBeDefined();
     });
 });
 
