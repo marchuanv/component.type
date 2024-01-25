@@ -5,7 +5,7 @@ import {
     Dog, DogCtorArgs, Food, FoodCtorArgs,
 } from './index.mjs';
 describe('when deserialising the Dog class given an instance of dog ctor args', () => {
-    fit('should deserialise without error', async () => {
+    it('should deserialise without error', async () => {
         let error = null;
         let serialisedDogStr = '';
         let serialisedDogStr2 = '';
