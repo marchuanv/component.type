@@ -6,83 +6,82 @@ import {
     Food
 } from '../index.mjs';
 export class AnimalCtorArgs extends CtorArgs {
-
     /**
      * @returns { String }
     */
     get name() {
-        return super.get({ name: null });
+        return this.get({ name: null });
     }
     /**
      * @param { String } value
     */
     set name(value) {
-        super.set({ name: value });
+        this.set({ name: value });
     }
 
     /**
      * @returns { Number }
     */
     get age() {
-        return super.get({ age: null });
+        return this.get({ age: null });
     }
     /**
      * @param { Number } value
     */
     set age(value) {
-        super.set({ age: value });
+        this.set({ age: value });
     }
 
     /**
      * @returns { Number }
     */
     get weight() {
-        return super.get({ weight: null });
+        return this.get({ weight: null });
     }
     /**
      * @param { Number } value
     */
     set weight(value) {
-        super.set({ weight: value });
+        this.set({ weight: value });
     }
 
     /**
      * @returns { Food }
     */
     get food() {
-        return super.get({ food: null });
+        return this.get({ food: null });
     }
     /**
      * @param { Food } value
     */
     set food(value) {
-        super.set({ food: value });
+        this.set({ food: value });
     }
 
     /**
      * @returns { String }
     */
     get type() {
-        return super.get({ type: null });
+        return this.get({ type: null });
     }
     /**
      * @param { String } value
     */
     set type(value) {
-        super.set({ type: value });
+        this.set({ type: value });
     }
 
     /**
      * @returns { Array<String> }
     */
     get vaccinationYears() {
-        return super.get({ vaccinationYears: null });
+        return this.get({ vaccinationYears: null });
     }
     /**
      * @returns { Array<String> }
     */
     set vaccinationYears(value) {
-        super.set({ vaccinationYears: value });
+        this.set({ vaccinationYears: value });
     }
 }
 export class Animal extends Container {

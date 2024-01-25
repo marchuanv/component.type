@@ -8,6 +8,7 @@ describe('when deserialising the Dog class given an instance of dog ctor args', 
     fit('should deserialise without error', async () => {
         let error = null;
         let serialisedDogStr = '';
+        let serialisedDogStr2 = '';
         let dogInstance = null;
 
         const foodArgs = new FoodCtorArgs();
@@ -25,7 +26,8 @@ describe('when deserialising the Dog class given an instance of dog ctor args', 
         const dog = new Dog(dogArgs);
         try {
             serialisedDogStr = await dog.serialise();
-            dogInstance = await Container.deserialise(serialisedDogStr, Dog, DogCtorArgs);
+            dogInstance = await Container.deserialise(serialisedDogStr);
+            serialisedDogStr2 = dogInstance.serialise();
         } catch (err) {
             error = err;
             console.error(error);
@@ -33,7 +35,7 @@ describe('when deserialising the Dog class given an instance of dog ctor args', 
         expect(error).toBeNull();
         expect(dogInstance).not.toBeNull();
         expect(dogInstance).toBeInstanceOf(Dog);
-        expect(dogInstance.food).toBeDefined();
+        expect(serialisedDogStr2).toBe(serialisedDogStr);
     });
 });
 
@@ -52,7 +54,7 @@ describe('when deserialising the Dog class given incorrect json data', () => {
             vaccinationYears: "test"
         });
         try {
-            await Container.deserialise(serialisedDogStr, Dog, DogCtorArgs);
+            await Container.deserialise(serialisedDogStr);
         } catch (err) {
             error = err;
             console.error(error);

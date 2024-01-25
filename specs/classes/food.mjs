@@ -3,31 +3,30 @@ import {
     CtorArgs
 } from '../../registry.mjs';
 export class FoodCtorArgs extends CtorArgs {
-
     /**
      * @returns { String }
     */
     get name() {
-        return super.get({ name: null });
+        return this.get({ name: null });
     }
     /**
      * @param { String } value
     */
     set name(value) {
-        super.set({ name: value });
+        this.set({ name: value });
     }
 
     /**
      * @returns { Boolean }
     */
     get isAdultFood() {
-        return super.get({ isAdultFood: null });
+        return this.get({ isAdultFood: null });
     }
     /**
      * @param { Boolean } value
     */
     set isAdultFood(value) {
-        super.set({ isAdultFood: value });
+        this.set({ isAdultFood: value });
     }
 }
 export class Food extends Container {
