@@ -1,19 +1,19 @@
 {
-    "name": "component.container",
-    "description": "common modules, algorithms and general functions",
+    "name": "component.registry",
+    "description": "generates registry files from libraries",
     "version": "1.0.0",
     "author": "Marchuan Van Der Merwe",
     "type": "module",
-    "main": "registry.mjs",
+    "main": "index.mjs",
     "license": "LGPL-3.0-or-later",
     "engines": {
         "node": "18.16.1",
         "npm": "9.5.1"
     },
     "keywords": [
-        "schema",
-        "interface",
-        "container"
+        "generate",
+        "import",
+        "export"
     ],
     "files": [
         "lib"
@@ -23,12 +23,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/marchuanv/component.container.git"
+        "url": "git+https://github.com/marchuanv/component.registry.git"
     },
     "bugs": {
-        "url": "https://github.com/marchuanv/component.container/issues"
+        "url": "https://github.com/marchuanv/component.registry/issues"
     },
-    "homepage": "https://github.com/marchuanv/component.container#readme",
+    "homepage": "https://github.com/marchuanv/component.registry#readme",
     "dependencies": {
         "utils": "marchuanv/utils"
     }
