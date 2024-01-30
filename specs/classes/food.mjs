@@ -1,8 +1,4 @@
-import {
-    Container,
-    CtorArgs
-} from '../../registry.mjs';
-export class FoodCtorArgs extends CtorArgs {
+export class FoodCtorArgs {
     /**
      * @returns { String }
     */
@@ -29,7 +25,7 @@ export class FoodCtorArgs extends CtorArgs {
         this.set({ isAdultFood: value });
     }
 }
-export class Food extends Container {
+export class Food {
     /**
      * @param { FoodCtorArgs } foodArgs
     */

@@ -1,11 +1,7 @@
 import {
-    Container,
-    CtorArgs
-} from '../../registry.mjs';
-import {
     Food
-} from '../index.mjs';
-export class AnimalCtorArgs extends CtorArgs {
+} from './food.mjs';
+export class AnimalCtorArgs {
     /**
      * @returns { String }
     */
@@ -84,7 +80,7 @@ export class AnimalCtorArgs extends CtorArgs {
         this.set({ vaccinationYears: value });
     }
 }
-export class Animal extends Container {
+export class Animal {
     /**
      * @param { AnimalCtorArgs } animalArgs
     */
