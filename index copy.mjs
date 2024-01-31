@@ -1,8 +1,6 @@
-import { existsSync, resolve } from "utils";
-import { ApplicationModule } from './lib/application.module.mjs';
-import { ClassMetadata } from './lib/class.metadata.mjs';
-import { DirectoryPathInfo } from './lib/directory.path.info.mjs';
-import { FilePathInfo } from './lib/file.path.info.mjs';
+import { copyFileSync, rmSync } from 'node:fs';
+import { join } from 'node:path';
+import { existsSync, importExtended, resolve } from "utils";
 
 let directoryPath = process.argv[2];
 if (directoryPath) {
@@ -11,6 +9,25 @@ if (directoryPath) {
 if (!existsSync(directoryPath)) {
     throw new Error(`${directoryPath} directory does not exist`);
 }
+
+const filePathInfoScriptName = 'file.path.info.mjs';
+const directoryPathInfoScriptName = 'directory.path.info.mjs';
+const classFileScriptName = 'class.file.mjs';
+const classMetadataScriptName = 'class.metadata.mjs';
+const applicationModuleScriptName = 'application.module.mjs';
+
+const filePathInfoScriptPath = join(directoryPath, filePathInfoScriptName);
+const directoryPathInfoScriptPath = join(directoryPath, directoryPathInfoScriptName);
+const classFileScriptPath = join(directoryPath, classFileScriptName);
+const classMetadataScriptPath = join(directoryPath, classMetadataScriptName);
+const applicationModuleScriptPath = join(directoryPath, applicationModuleScriptName);
+
+copyFileSync(`./lib/${filePathInfoScriptName}`, filePathInfoScriptPath);
+copyFileSync(`./lib/${directoryPathInfoScriptName}`, directoryPathInfoScriptPath);
+copyFileSync(`./lib/${classFileScriptName}`, classFileScriptPath);
+copyFileSync(`./lib/${classMetadataScriptName}`, classMetadataScriptPath);
+copyFileSync(`./lib/${applicationModuleScriptName}`, applicationModuleScriptPath);
+
 function sort(allClassMetadata) {
     return allClassMetadata.sort((classA) => {
         const classAImports = classA.importMetadata.map(x => x.className);
@@ -29,6 +46,8 @@ function sort(allClassMetadata) {
 }
 
 async function next(directoryPathInfo, callback) {
+    const { DirectoryPathInfo } = await importExtended.imp(directoryPathInfoScriptPath);
+    const { FilePathInfo } = await importExtended.imp(filePathInfoScriptPath);
     const childDirectories = directoryPathInfo.children.filter(child => child instanceof DirectoryPathInfo);
     const childFiles = directoryPathInfo.children.filter(child => child instanceof FilePathInfo);
     for (const filePathInfo of childFiles) {
@@ -40,19 +59,15 @@ async function next(directoryPathInfo, callback) {
 }
 
 (async () => {
+    const { ApplicationModule } = await importExtended.imp(applicationModuleScriptPath);
     const { directory } = new ApplicationModule();
+    const { ClassMetadata } = await importExtended.imp(classMetadataScriptPath);
     let allClassMetadata = [];
     await next(directory, async (filePathInfo) => {
         const classMetadata = new ClassMetadata(filePathInfo);
         allClassMetadata.push(classMetadata);
     });
     allClassMetadata = sort(allClassMetadata);
-    const exportsOnly = allClassMetadata.filter(meta =>
-        meta.exportMetadata.length > 0 &&
-        meta.importMetadata.length == 0
-    );
-    const imports = allClassMetadata.filter(meta => meta.importMetadata.length > 0);
-
     for (const classFile of allClassMetadata) {
         for (const { className, metadata: { pathInfo: { absolutePath } } } of classFile.importMetadata) {
             console.log({ className, absolutePath });
@@ -94,5 +109,9 @@ async function next(directoryPathInfo, callback) {
     // }
 })().catch(err => console.log(err))
     .finally(() => {
-
+        rmSync(filePathInfoScriptPath);
+        rmSync(directoryPathInfoScriptPath);
+        rmSync(classFileScriptPath);
+        rmSync(classMetadataScriptPath);
+        rmSync(applicationModuleScriptPath);
     });
