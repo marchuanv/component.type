@@ -28,6 +28,32 @@ copyFileSync(`./lib/${classFileScriptName}`, classFileScriptPath);
 copyFileSync(`./lib/${classMetadataScriptName}`, classMetadataScriptPath);
 copyFileSync(`./lib/${applicationModuleScriptName}`, applicationModuleScriptPath);
 
+function sort(allClassMetadata) {
+    return allClassMetadata.sort((classA, classB) => {
+
+        const classesAImports = classA.importMetadata.map(x => x.className);
+        const classesAExports = classA.exportMetadata.map(x => x.className);
+        const classesBImports = classB.importMetadata.map(x => x.className);
+        const classesBExports = classB.exportMetadata.map(x => x.className);
+
+        const classAImportsClassB = classesAImports.find(
+            classAName => classesBExports.find(classBName => classBName === classAName
+            )) !== undefined;
+
+        const classBImportsClassA = classesBImports.find(
+            classBName => classesAExports.find(classAName => classAName === classBName
+            )) !== undefined;
+
+        if (classAImportsClassB) {
+            return 1;
+        }
+        if (classBImportsClassA) {
+            return -1;
+        }
+        return 0;
+    });
+}
+
 async function next(directoryPathInfo, callback) {
     const { DirectoryPathInfo } = await importExtended.imp(directoryPathInfoScriptPath);
     const { FilePathInfo } = await importExtended.imp(filePathInfoScriptPath);
@@ -45,11 +71,14 @@ async function next(directoryPathInfo, callback) {
     const { ApplicationModule } = await importExtended.imp(applicationModuleScriptPath);
     const { directory } = new ApplicationModule();
     const { ClassMetadata } = await importExtended.imp(classMetadataScriptPath);
-    const classFiles = [];
+    let allClassMetadata = [];
     await next(directory, async (filePathInfo) => {
-        const classFile = new ClassMetadata(filePathInfo);
-        classFiles.push(classFile);
+        const classMetadata = new ClassMetadata(filePathInfo);
+        allClassMetadata.push(classMetadata);
     });
+    allClassMetadata = sort(allClassMetadata);
+    const classOrdered = allClassMetadata.map(meta => meta.pathInfo.absolutePath);
+    console.log(classOrdered);
     for (const classFile of classFiles) {
         for (const { className, metadata: { pathInfo: { absolutePath } } } of classFile.importMetadata) {
             console.log({ className, absolutePath });
