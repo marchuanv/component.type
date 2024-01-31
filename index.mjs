@@ -29,26 +29,17 @@ copyFileSync(`./lib/${classMetadataScriptName}`, classMetadataScriptPath);
 copyFileSync(`./lib/${applicationModuleScriptName}`, applicationModuleScriptPath);
 
 function sort(allClassMetadata) {
-    return allClassMetadata.sort((classA, classB) => {
-
-        const classesAImports = classA.importMetadata.map(x => x.className);
-        const classesAExports = classA.exportMetadata.map(x => x.className);
-        const classesBImports = classB.importMetadata.map(x => x.className);
-        const classesBExports = classB.exportMetadata.map(x => x.className);
-
-        const classAImportsClassB = classesAImports.find(
-            classAName => classesBExports.find(classBName => classBName === classAName
-            )) !== undefined;
-
-        const classBImportsClassA = classesBImports.find(
-            classBName => classesAExports.find(classAName => classAName === classBName
-            )) !== undefined;
-
-        if (classAImportsClassB) {
-            return 1;
-        }
-        if (classBImportsClassA) {
+    return allClassMetadata.sort((classA) => {
+        const classAImports = classA.importMetadata.map(x => x.className);
+        if (classAImports.length === 0) {
             return -1;
+        }
+        const findClassThatExportsIndex = allClassMetadata
+            .findIndex(c => c.exportMetadata.find(meta => classAImports.find(classAName => classAName === meta.className)));
+        const classAIndex = allClassMetadata
+            .findIndex(c => c.pathInfo.absolutePath === classA.pathInfo.absolutePath);
+        if (classAIndex <= findClassThatExportsIndex) {
+            return findClassThatExportsIndex + 1;
         }
         return 0;
     });
@@ -79,7 +70,7 @@ async function next(directoryPathInfo, callback) {
     allClassMetadata = sort(allClassMetadata);
     const classOrdered = allClassMetadata.map(meta => meta.pathInfo.absolutePath);
     console.log(classOrdered);
-    for (const classFile of classFiles) {
+    for (const classFile of allClassMetadata) {
         for (const { className, metadata: { pathInfo: { absolutePath } } } of classFile.importMetadata) {
             console.log({ className, absolutePath });
         }
