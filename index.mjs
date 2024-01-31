@@ -68,8 +68,6 @@ async function next(directoryPathInfo, callback) {
         allClassMetadata.push(classMetadata);
     });
     allClassMetadata = sort(allClassMetadata);
-    const classOrdered = allClassMetadata.map(meta => meta.pathInfo.absolutePath);
-    console.log(classOrdered);
     for (const classFile of allClassMetadata) {
         for (const { className, metadata: { pathInfo: { absolutePath } } } of classFile.importMetadata) {
             console.log({ className, absolutePath });
