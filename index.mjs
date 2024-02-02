@@ -4,6 +4,22 @@ import { ApplicationModule } from './lib/application.module.mjs';
 import { ClassTree } from "./lib/class.tree.mjs";
 import { DirectoryPathInfo } from './lib/directory.path.info.mjs';
 const destRegistryDirName = '049d38dc';
+/**
+ * @param { Object } registry
+ * @param { Array<String> } importIds
+ * @returns { Array<{ Id: String, classNames: Array<String>, imports: Array<String> }> }
+*/
+function getImportConfig(registry, importIds) {
+    return importIds.map((Id) => {
+        const { imports, classNames } = registry[Id];
+        return {
+            Id,
+            classNames,
+            imports
+        };
+    });
+}
+
 (async () => {
     const appModule = new ApplicationModule();
     let destRegistryDirPath = join(appModule.directory.absolutePath, destRegistryDirName);
@@ -52,17 +68,30 @@ const destRegistryDirName = '049d38dc';
         let fileName = key.split('-')[0];
         const _registryScriptFilePath = join(registryDirPathInfo.absolutePath, `${fileName}.mjs`);
         const exportClassNames = [];
-        const importClassNames = [];
+        let resolvedImports = [];
         exportClassNames.push({ Id: key, classNames });
-        for (const Id of imports) {
-            const impReg = registry[Id];
-            if (!importClassNames.find(x => x.Id === Id)) {
-                const imp = { Id, classNames: impReg.classNames };
-                importClassNames.push(imp);
+        for (const impConfig of getImportConfig(registry, imports)) {
+            const { Id, imports } = impConfig;
+            if (!resolvedImports.find(x => x.Id === Id)) {
+                for (const impConfig2 of getImportConfig(registry, imports)) {
+                    const impConfig2Cloned = JSON.parse(JSON.stringify(impConfig2));
+                    resolvedImports.push(impConfig2Cloned);
+                }
+                resolvedImports.push(impConfig);
             }
         };
+        resolvedImports = resolvedImports.map(imp => {
+            let count = resolvedImports.filter(imp2 => imp2.Id === imp.Id).length;
+            if (count > 1) {
+                const index = resolvedImports.findIndex(imp2 => imp2.Id === imp.Id);
+                resolvedImports.splice(index, 1);
+                return null;
+            }
+            return imp;
+        }).filter(imp => imp);
         let relativePath = '';
-        let imp = importClassNames.shift();
+        const resolvedImportsClone = JSON.parse(JSON.stringify(resolvedImports));
+        let imp = resolvedImportsClone.shift();
         while (imp) {
             const { Id, classNames } = imp;
             fileName = Id.split('-')[0];
@@ -75,7 +104,7 @@ const destRegistryDirName = '049d38dc';
                 }
                 return con;
             }, '')}} from '${relativePath}';`;
-            imp = importClassNames.shift();
+            imp = resolvedImportsClone.shift();
         }
         relativePath = `../${filePath}`;
         let exp = exportClassNames.shift();
@@ -90,6 +119,19 @@ const destRegistryDirName = '049d38dc';
                 return con;
             }, '')}} from '${relativePath}';`;
             exp = exportClassNames.shift();
+        }
+        exp = resolvedImports.shift();
+        while (exp) {
+            const { classNames } = exp;
+            content = `${content}\r\nexport { ${classNames.reduce((con, className, index) => {
+                if (index === (classNames.length - 1)) {
+                    con = `${con}\r\n${className}`;
+                } else {
+                    con = `${con}\r\n${className},`;
+                }
+                return con;
+            }, '')}}`;
+            exp = resolvedImports.shift();
         }
         writeFileSync(_registryScriptFilePath, content);
     }
