@@ -1,5 +1,5 @@
 {
-    "49fc0137-49bf-416a-bc86-b2a7eaad9066": {
+    "8971b017-86ee-4e6a-87c4-12ca6772d1cb": {
         "fileName": "food.mjs",
         "filePath": "specs/classes/food.mjs",
         "classNames": [
@@ -8,7 +8,7 @@
         ],
         "imports": []
     },
-    "60e4e27d-959d-4540-8e8b-6a2d97a56c74": {
+    "b5497e02-e601-40a9-9934-be965a44259f": {
         "fileName": "animal.mjs",
         "filePath": "specs/classes/animal.mjs",
         "classNames": [
@@ -16,10 +16,10 @@
             "Animal"
         ],
         "imports": [
-            "49fc0137-49bf-416a-bc86-b2a7eaad9066"
+            "8971b017-86ee-4e6a-87c4-12ca6772d1cb"
         ]
     },
-    "505372cd-f678-4688-ba05-c89eb7542843": {
+    "744defdc-34b0-45d2-9078-2e4826e00a29": {
         "fileName": "dog.mjs",
         "filePath": "specs/classes/dog.mjs",
         "classNames": [
@@ -27,10 +27,10 @@
             "Dog"
         ],
         "imports": [
-            "60e4e27d-959d-4540-8e8b-6a2d97a56c74"
+            "b5497e02-e601-40a9-9934-be965a44259f"
         ]
     },
-    "482a7a1d-6bff-4cd6-af0d-6fb027a6f78e": {
+    "2eeef313-f19c-4cb1-8a93-858b2910885a": {
         "fileName": "directory.path.info.mjs",
         "filePath": "lib/directory.path.info.mjs",
         "classNames": [
@@ -38,68 +38,68 @@
         ],
         "imports": []
     },
-    "421caf50-d94e-4f5d-8f9d-cdd1a918a980": {
+    "076c5954-06c7-46e7-8154-e9f75ec64f78": {
         "fileName": "application.module.mjs",
         "filePath": "lib/application.module.mjs",
         "classNames": [
             "ApplicationModule"
         ],
         "imports": [
-            "482a7a1d-6bff-4cd6-af0d-6fb027a6f78e"
+            "2eeef313-f19c-4cb1-8a93-858b2910885a"
         ]
     },
-    "59245a45-8d0d-4fea-b557-450e1a951111": {
+    "471b64c6-ccf3-4a23-ac03-8036bf9fb712": {
         "fileName": "class.file.mjs",
         "filePath": "lib/class.file.mjs",
         "classNames": [
             "ClassFile"
         ],
         "imports": [
-            "421caf50-d94e-4f5d-8f9d-cdd1a918a980",
-            "482a7a1d-6bff-4cd6-af0d-6fb027a6f78e",
-            "665123da-6c72-4b35-b1f2-09a422b3e1a9"
+            "076c5954-06c7-46e7-8154-e9f75ec64f78",
+            "2eeef313-f19c-4cb1-8a93-858b2910885a",
+            "2b7058ca-04d8-4863-a317-a0ca80ed7ddf"
         ]
     },
-    "3bbdba63-c997-4978-9e27-000fc83a63ea": {
+    "ccedbe49-4639-4ad3-83cd-46528d24699b": {
         "fileName": "class.files.spec.mjs",
         "filePath": "specs/class.files.spec.mjs",
         "classNames": [],
         "imports": [
-            "59245a45-8d0d-4fea-b557-450e1a951111"
+            "471b64c6-ccf3-4a23-ac03-8036bf9fb712"
         ]
     },
-    "d233aaac-d0de-4154-9fce-9b77f300b65e": {
+    "e7393a14-b697-4e3b-954e-1decce534f4f": {
         "fileName": "class.tree.mjs",
         "filePath": "lib/class.tree.mjs",
         "classNames": [
             "ClassTree"
         ],
         "imports": [
-            "59245a45-8d0d-4fea-b557-450e1a951111",
-            "421caf50-d94e-4f5d-8f9d-cdd1a918a980",
-            "330ed456-b5d6-4c73-911e-6d758a8be268",
-            "665123da-6c72-4b35-b1f2-09a422b3e1a9",
-            "482a7a1d-6bff-4cd6-af0d-6fb027a6f78e"
+            "471b64c6-ccf3-4a23-ac03-8036bf9fb712",
+            "076c5954-06c7-46e7-8154-e9f75ec64f78",
+            "2b0e1e46-8866-4e9b-8d09-00df4ec48dd2",
+            "2b7058ca-04d8-4863-a317-a0ca80ed7ddf",
+            "2eeef313-f19c-4cb1-8a93-858b2910885a"
         ]
     },
-    "665123da-6c72-4b35-b1f2-09a422b3e1a9": {
+    "2b7058ca-04d8-4863-a317-a0ca80ed7ddf": {
         "fileName": "file.path.info.mjs",
         "filePath": "lib/file.path.info.mjs",
         "classNames": [
             "FilePathInfo"
         ],
         "imports": [
-            "482a7a1d-6bff-4cd6-af0d-6fb027a6f78e"
+            "2eeef313-f19c-4cb1-8a93-858b2910885a"
         ]
     },
-    "330ed456-b5d6-4c73-911e-6d758a8be268": {
+    "2b0e1e46-8866-4e9b-8d09-00df4ec48dd2": {
         "fileName": "class.metadata.mjs",
         "filePath": "lib/class.metadata.mjs",
         "classNames": [
             "ClassMetadata"
         ],
         "imports": [
-            "665123da-6c72-4b35-b1f2-09a422b3e1a9"
+            "2b7058ca-04d8-4863-a317-a0ca80ed7ddf"
         ]
     }
 }

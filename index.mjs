@@ -1,19 +1,19 @@
-import { existsSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-
 import { ApplicationModule } from './lib/application.module.mjs';
 import { ClassTree } from "./lib/class.tree.mjs";
+import { DirectoryPathInfo } from './lib/directory.path.info.mjs';
+const destRegistryDirName = '049d38dc';
 (async () => {
     const appModule = new ApplicationModule();
-    let registryConfigFilePath = join(appModule.directory.absolutePath, `registry.json`);
-    while (existsSync(registryConfigFilePath)) {
-        rmSync(registryConfigFilePath);
-
+    let destRegistryDirPath = join(appModule.directory.absolutePath, destRegistryDirName);
+    if (existsSync(destRegistryDirPath)) {
+        rmSync(destRegistryDirPath, { recursive: true, force: true });
     }
-    let registryScriptFilePath = join(appModule.directory.absolutePath, `registry.mjs`);
-    while (existsSync(registryScriptFilePath)) {
-        rmSync(registryScriptFilePath);
-    }
+    mkdirSync(destRegistryDirPath);
+    const registryDirPathInfo = new DirectoryPathInfo(destRegistryDirPath, appModule.directory);
+    let registryConfigFilePath = join(registryDirPathInfo.absolutePath, `index.json`);
+    let registryScriptFilePath = join(registryDirPathInfo.absolutePath, `registry.mjs`);
     writeFileSync(registryScriptFilePath, '');
     const classTree = new ClassTree(appModule);
     classTree.walkMetadata(({ classNames, importPathInfo, exportPathInfo }, depth) => {
@@ -45,64 +45,52 @@ import { ClassTree } from "./lib/class.tree.mjs";
         }
         writeFileSync(registryConfigFilePath, JSON.stringify(registry, null, 4));
     });
-
     const registry = JSON.parse(readFileSync(registryConfigFilePath));
     for (const key of Object.keys(registry)) {
-        const { imports } = registry[key];
-        if (imports.length > 0) {
-            for (const Id of imports) {
-                const registryItem = registry[Id];
-                if (!registryItem.created) {
-                    registryItem.created = true;
-                    const { classNames, filePath } = registry[Id];
-                    const relativePath = filePath;
-                    let content = readFileSync(registryScriptFilePath, 'utf8');
-                    content = `${content}\r\nimport { ${classNames.reduce((con, className, index) => {
-                        if (index === 0) {
-                            con = `${con}\r\n${className},`;
-                        } else {
-                            con = `,${con}\r\n${className}`;
-                        }
-                        return con;
-                    }, '')}} from '${relativePath}';`;
-                    writeFileSync(registryScriptFilePath, content);
-                }
+        let content = '';
+        const { imports, classNames, filePath } = registry[key];
+        let fileName = key.split('-')[0];
+        const _registryScriptFilePath = join(registryDirPathInfo.absolutePath, `${fileName}.mjs`);
+        const exportClassNames = [];
+        const importClassNames = [];
+        exportClassNames.push({ Id: key, classNames });
+        for (const Id of imports) {
+            const impReg = registry[Id];
+            if (!importClassNames.find(x => x.Id === Id)) {
+                const imp = { Id, classNames: impReg.classNames };
+                importClassNames.push(imp);
             }
+        };
+        let relativePath = '';
+        let imp = importClassNames.shift();
+        while (imp) {
+            const { Id, classNames } = imp;
+            fileName = Id.split('-')[0];
+            relativePath = `./${fileName}.mjs`;
+            content = `${content}\r\nimport { ${classNames.reduce((con, className, index) => {
+                if (index === (classNames.length - 1)) {
+                    con = `${con}\r\n${className}`;
+                } else {
+                    con = `${con}\r\n${className},`;
+                }
+                return con;
+            }, '')}} from '${relativePath}';`;
+            imp = importClassNames.shift();
         }
+        relativePath = `../${filePath}`;
+        let exp = exportClassNames.shift();
+        while (exp) {
+            const { classNames } = exp;
+            content = `${content}\r\nexport { ${classNames.reduce((con, className, index) => {
+                if (index === (classNames.length - 1)) {
+                    con = `${con}\r\n${className}`;
+                } else {
+                    con = `${con}\r\n${className},`;
+                }
+                return con;
+            }, '')}} from '${relativePath}';`;
+            exp = exportClassNames.shift();
+        }
+        writeFileSync(_registryScriptFilePath, content);
     }
-
-    // const importFileName = basename(importPathInfo.fileName)
-    //     .replace(extname(importPathInfo.fileName), '');
-    // for(const className of classNames) {
-    //     registry[className] = { imports: {} };
-    //     const { imports } = registry[className];
-    //     imports[fileName] = exportPathInfo.relativePath;
-    // }
-
-    // console.log(metadata.classNames);
-    // registryScriptFilePath = join(appModule.directory.absolutePath, `registry.${depth + 1}.mjs`);
-    // let content = '';
-    // if (!existsSync(registryScriptFilePath)) {
-    //     content = `${content}\r\nimport { ${metadata.classNames.reduce((con, className) => {
-    //         con = `${con}\r\n${className},`;
-    //         return con;
-    //     }, '')} } from './registry.${depth}.mjs';`;
-
-    //     content = `${content}\r\nexport { ${metadata.classNames.reduce((con, className) => {
-    //         con = `${con}\r\n${className},`;
-    //         return con;
-    //     }, '')} };`;
-
-    //     writeFileSync(registryScriptFilePath, content);
-    // }
-    // content = '';
-    // registryScriptFilePath = join(appModule.directory.absolutePath, `registry.${depth}.mjs`);
-    // if (existsSync(registryScriptFilePath)) {
-    //     content = readFileSync(registryScriptFilePath, 'utf8');
-    // }
-    // for (const className of metadata.classNames) {
-    //     content = `${content}\r\nexport {${className}} from './${metadata.exportPathInfo.relativePath.replace(/\\/g, '/')}';`;
-    // }
-    // writeFileSync(registryScriptFilePath, content);
-
 })().catch(err => console.log(err));
