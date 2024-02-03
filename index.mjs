@@ -1,5 +1,5 @@
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, resolve } from 'node:path';
 import { ApplicationModule } from './lib/application.module.mjs';
 import { ClassTree } from "./lib/class.tree.mjs";
 import { DirectoryPathInfo } from './lib/directory.path.info.mjs';
@@ -62,36 +62,59 @@ function getImportConfig(registry, importIds) {
         writeFileSync(registryConfigFilePath, JSON.stringify(registry, null, 4));
     });
     const registry = JSON.parse(readFileSync(registryConfigFilePath));
+    //resolve all imports
+    for (const key of Object.keys(registry)) {
+        const { imports } = registry[key];
+        const resolvedImports = getImportConfig(registry, imports);
+        for(let index = 0; index < imports.length; index++) {
+            imports[index] = resolvedImports[index];
+        }
+    }
+    //remove duplicates
+    for (const key of Object.keys(registry)) {
+        const obj = registry[key].imports.reduce((obj, imp) => {
+            obj.imports.push(imp);
+            const { imports } = imp.imports.reduce((obj2, imp2) => {
+                obj2.imports.push(imp2);
+                return obj2;
+            },{ imports: [] });
+            obj.imports = obj.imports.concat(imports);
+            return obj;
+        },{ imports: [] });
+        const _imports = [];
+        let imp = obj.imports.shift();
+        while(imp) {
+            if(!_imports.find(_imp => _imp.Id === imp.Id)) {
+                _imports.push(imp);
+            }
+            let imp2 = imp.imports.shift();
+            while(imp2) {
+                if(!_imports.find(_imp2 => _imp2.Id === imp2.Id)) {
+                    _imports.push(imp2);
+                }
+                imp2 = imp2.imports.shift();
+            }
+            imp = obj.imports.shift();
+        }
+        const finalImport = _imports[0];
+        if (finalImport) {
+            const { classes } = _imports.reduce((obj, { classNames }) => {
+                obj.classes = obj.classes.concat(classNames);
+                return obj;
+            }, { classes: [] });
+            finalImport.classNames = classes;
+            registry[key].imports = [finalImport];
+        }
+    }
+    writeFileSync(registryConfigFilePath, JSON.stringify(registry, null, 4));
     for (const key of Object.keys(registry)) {
         let content = '';
         const { imports, classNames, filePath } = registry[key];
         let fileName = key.split('-')[0];
         const _registryScriptFilePath = join(registryDirPathInfo.absolutePath, `${fileName}.mjs`);
-        const exportClassNames = [];
-        let resolvedImports = [];
-        exportClassNames.push({ Id: key, classNames });
-        for (const impConfig of getImportConfig(registry, imports)) {
-            const { Id, imports } = impConfig;
-            if (!resolvedImports.find(x => x.Id === Id)) {
-                for (const impConfig2 of getImportConfig(registry, imports)) {
-                    const impConfig2Cloned = JSON.parse(JSON.stringify(impConfig2));
-                    resolvedImports.push(impConfig2Cloned);
-                }
-                resolvedImports.push(impConfig);
-            }
-        };
-        resolvedImports = resolvedImports.map(imp => {
-            let count = resolvedImports.filter(imp2 => imp2.Id === imp.Id).length;
-            if (count > 1) {
-                const index = resolvedImports.findIndex(imp2 => imp2.Id === imp.Id);
-                resolvedImports.splice(index, 1);
-                return null;
-            }
-            return imp;
-        }).filter(imp => imp);
         let relativePath = '';
-        const resolvedImportsClone = JSON.parse(JSON.stringify(resolvedImports));
-        let imp = resolvedImportsClone.shift();
+        let resolvedImports = JSON.parse(JSON.stringify(imports));
+        let imp = resolvedImports.shift();
         while (imp) {
             const { Id, classNames } = imp;
             fileName = Id.split('-')[0];
@@ -104,23 +127,19 @@ function getImportConfig(registry, importIds) {
                 }
                 return con;
             }, '')}} from '${relativePath}';`;
-            imp = resolvedImportsClone.shift();
+            imp = resolvedImports.shift();
         }
         relativePath = `../${filePath}`;
-        let exp = exportClassNames.shift();
-        while (exp) {
-            const { classNames } = exp;
-            content = `${content}\r\nexport { ${classNames.reduce((con, className, index) => {
-                if (index === (classNames.length - 1)) {
-                    con = `${con}\r\n${className}`;
-                } else {
-                    con = `${con}\r\n${className},`;
-                }
-                return con;
-            }, '')}} from '${relativePath}';`;
-            exp = exportClassNames.shift();
-        }
-        exp = resolvedImports.shift();
+        content = `${content}\r\nexport { ${classNames.reduce((con, className, index) => {
+            if (index === (classNames.length - 1)) {
+                con = `${con}\r\n${className}`;
+            } else {
+                con = `${con}\r\n${className},`;
+            }
+            return con;
+        }, '')}} from '${relativePath}';`;
+        resolvedImports = JSON.parse(JSON.stringify(imports));
+        let exp = resolvedImports.shift();
         while (exp) {
             const { classNames } = exp;
             content = `${content}\r\nexport { ${classNames.reduce((con, className, index) => {

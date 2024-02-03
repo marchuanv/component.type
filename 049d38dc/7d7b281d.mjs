@@ -1,7 +1,7 @@
 
 import { 
 FoodCtorArgs,
-Food} from './38738979.mjs';
+Food} from './dc9fb0c9.mjs';
 export { 
 AnimalCtorArgs,
 Animal} from '../specs/classes/animal.mjs';
