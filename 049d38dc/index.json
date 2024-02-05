@@ -1,162 +1,149 @@
 {
-    "dc9fb0c9-e540-48fa-8828-d56ced0cff9c": {
-        "fileName": "food.mjs",
-        "filePath": "specs/classes/food.mjs",
-        "classNames": [
-            "FoodCtorArgs",
-            "Food"
+    "24382474": {
+        "classes": [
+            "ClassFile"
         ],
-        "imports": []
+        "filePath": "lib\\class.file.mjs",
+        "imports": [
+            "4add8235",
+            "77d4d445"
+        ],
+        "exports": [
+            "24382474",
+            "4add8235",
+            "77d4d445"
+        ]
     },
-    "7d7b281d-a331-407f-bb2c-ecfdc8c662c0": {
-        "fileName": "animal.mjs",
-        "filePath": "specs/classes/animal.mjs",
-        "classNames": [
+    "3e5c3a5f": {
+        "classes": [],
+        "filePath": "specs\\class.files.spec.mjs",
+        "imports": [
+            "24382474",
+            "4add8235",
+            "77d4d445"
+        ],
+        "exports": [
+            "3e5c3a5f",
+            "24382474",
+            "4add8235",
+            "77d4d445"
+        ]
+    },
+    "ffcb12bf": {
+        "classes": [],
+        "filePath": "specs\\index.mjs",
+        "imports": [],
+        "exports": [
+            "ffcb12bf"
+        ]
+    },
+    "d9596f3f": {
+        "classes": [
             "AnimalCtorArgs",
             "Animal"
         ],
+        "filePath": "specs\\classes\\animal.mjs",
         "imports": [
-            {
-                "Id": "dc9fb0c9-e540-48fa-8828-d56ced0cff9c",
-                "classNames": [
-                    "FoodCtorArgs",
-                    "Food"
-                ],
-                "imports": []
-            }
+            "ce5aa24a"
+        ],
+        "exports": [
+            "d9596f3f",
+            "ce5aa24a"
         ]
     },
-    "22167697-2453-4290-8822-031cdeb6556b": {
-        "fileName": "dog.mjs",
-        "filePath": "specs/classes/dog.mjs",
-        "classNames": [
+    "1b20b61a": {
+        "classes": [
             "DogCtorArgs",
             "Dog"
         ],
+        "filePath": "specs\\classes\\dog.mjs",
         "imports": [
-            {
-                "Id": "7d7b281d-a331-407f-bb2c-ecfdc8c662c0",
-                "classNames": [
-                    "AnimalCtorArgs",
-                    "Animal",
-                    "FoodCtorArgs",
-                    "Food"
-                ],
-                "imports": []
-            }
+            "d9596f3f",
+            "ce5aa24a"
+        ],
+        "exports": [
+            "1b20b61a",
+            "d9596f3f",
+            "ce5aa24a"
         ]
     },
-    "dee03d47-1b2d-4ea2-acc6-98e3e0300dfc": {
-        "fileName": "directory.path.info.mjs",
-        "filePath": "lib/directory.path.info.mjs",
-        "classNames": [
-            "DirectoryPathInfo"
+    "ce5aa24a": {
+        "classes": [
+            "FoodCtorArgs",
+            "Food"
         ],
-        "imports": []
+        "filePath": "specs\\classes\\food.mjs",
+        "imports": [],
+        "exports": [
+            "ce5aa24a"
+        ]
     },
-    "bec66ea7-9751-416d-bb97-89e55a0cfcfa": {
-        "fileName": "application.module.mjs",
-        "filePath": "lib/application.module.mjs",
-        "classNames": [
+    "13e68e86": {
+        "classes": [
             "ApplicationModule"
         ],
+        "filePath": "lib\\application.module.mjs",
         "imports": [
-            {
-                "Id": "dee03d47-1b2d-4ea2-acc6-98e3e0300dfc",
-                "classNames": [
-                    "DirectoryPathInfo"
-                ],
-                "imports": []
-            }
-        ]
-    },
-    "92befdc7-6325-4f04-9a73-5bacd56cbd1b": {
-        "fileName": "class.file.mjs",
-        "filePath": "lib/class.file.mjs",
-        "classNames": [
-            "ClassFile"
+            "77d4d445"
         ],
-        "imports": [
-            {
-                "Id": "bec66ea7-9751-416d-bb97-89e55a0cfcfa",
-                "classNames": [
-                    "ApplicationModule",
-                    "DirectoryPathInfo",
-                    "FilePathInfo"
-                ],
-                "imports": []
-            }
+        "exports": [
+            "13e68e86",
+            "77d4d445"
         ]
     },
-    "384eaec6-986d-4818-8f64-7ecdc9490fa9": {
-        "fileName": "class.files.spec.mjs",
-        "filePath": "specs/class.files.spec.mjs",
-        "classNames": [],
-        "imports": [
-            {
-                "Id": "92befdc7-6325-4f04-9a73-5bacd56cbd1b",
-                "classNames": [
-                    "ClassFile",
-                    "ApplicationModule",
-                    "DirectoryPathInfo",
-                    "FilePathInfo",
-                    "DirectoryPathInfo",
-                    "FilePathInfo"
-                ],
-                "imports": [
-                    {
-                        "Id": "ffa14734-3977-46c1-b722-7fa22492aae0",
-                        "classNames": [
-                            "FilePathInfo"
-                        ],
-                        "imports": []
-                    }
-                ]
-            }
-        ]
-    },
-    "54f0888b-7a1d-4403-a637-cfbc8bb2a754": {
-        "fileName": "class.tree.mjs",
-        "filePath": "lib/class.tree.mjs",
-        "classNames": [
-            "ClassTree"
-        ],
-        "imports": [
-            {
-                "Id": "92befdc7-6325-4f04-9a73-5bacd56cbd1b",
-                "classNames": [
-                    "ClassFile",
-                    "DirectoryPathInfo",
-                    "FilePathInfo",
-                    "ApplicationModule",
-                    "ClassMetadata"
-                ],
-                "imports": [
-                    {
-                        "Id": "ffa14734-3977-46c1-b722-7fa22492aae0",
-                        "classNames": [
-                            "FilePathInfo"
-                        ],
-                        "imports": []
-                    }
-                ]
-            }
-        ]
-    },
-    "ffa14734-3977-46c1-b722-7fa22492aae0": {
-        "fileName": "file.path.info.mjs",
-        "filePath": "lib/file.path.info.mjs",
-        "classNames": [
-            "FilePathInfo"
-        ],
-        "imports": []
-    },
-    "b01004c1-1285-4fd1-bbe3-d64ad3a1f713": {
-        "fileName": "class.metadata.mjs",
-        "filePath": "lib/class.metadata.mjs",
-        "classNames": [
+    "e827c0f9": {
+        "classes": [
             "ClassMetadata"
         ],
-        "imports": []
+        "filePath": "lib\\class.metadata.mjs",
+        "imports": [
+            "24382474",
+            "4add8235",
+            "77d4d445"
+        ],
+        "exports": [
+            "e827c0f9",
+            "24382474",
+            "4add8235",
+            "77d4d445"
+        ]
+    },
+    "77d4d445": {
+        "classes": [
+            "DirectoryPathInfo"
+        ],
+        "filePath": "lib\\directory.path.info.mjs",
+        "imports": [],
+        "exports": [
+            "77d4d445"
+        ]
+    },
+    "4add8235": {
+        "classes": [
+            "FilePathInfo"
+        ],
+        "filePath": "lib\\file.path.info.mjs",
+        "imports": [
+            "77d4d445"
+        ],
+        "exports": [
+            "4add8235",
+            "77d4d445"
+        ]
+    },
+    "614f812e": {
+        "classes": [
+            "RegistryConfig"
+        ],
+        "filePath": "lib\\registry.config.mjs",
+        "imports": [
+            "4add8235",
+            "77d4d445"
+        ],
+        "exports": [
+            "614f812e",
+            "4add8235",
+            "77d4d445"
+        ]
     }
 }

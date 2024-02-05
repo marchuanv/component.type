@@ -3,6 +3,7 @@ import { ClassFile } from "../lib/class.file.mjs";
 const currentDirPath = dirname(fileURLToPath(import.meta.url));
 describe('when loading a js module script', () => {
     it('should identify classes and provide all the exported class names', async () => {
+
         const classFiles = new ClassFile(join(currentDirPath, 'classes', 'dog.mjs'));
         await classFiles.load();
 
@@ -20,5 +21,6 @@ describe('when loading a js module script', () => {
 
         expect(classFiles.imports[0]).toBe('Animal');
         expect(classFiles.imports[1]).toBe('AnimalCtorArgs');
+        
     });
 });
