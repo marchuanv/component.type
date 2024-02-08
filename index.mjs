@@ -1,8 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
-import { ApplicationModule } from './lib/application.module.mjs';
-import { RegistryConfig } from "./lib/registry.config.mjs";
-import { DirectoryPathInfo } from './lib/directory.path.info.mjs';
+import { Registry } from './lib/registry.mjs';
 /**
  * @param { Object } registry
  * @param { Array<String> } Ids
@@ -41,7 +37,8 @@ function enumerateImports(registry, Ids) {
 }
 
 (async () => {
-    const appModule = new ApplicationModule();
+    const registry = new Registry();
+    registry.create();
     // let destRegistryDirPath = join(appModule.directory.absolutePath, destRegistryDirName);
     // if (existsSync(destRegistryDirPath)) {
     //     rmSync(destRegistryDirPath, { recursive: true, force: true });
@@ -51,7 +48,7 @@ function enumerateImports(registry, Ids) {
     // let registryConfigFilePath = join(registryDirPathInfo.absolutePath, `index.json`);
     // let registryScriptFilePath = join(registryDirPathInfo.absolutePath, `registry.mjs`);
     // writeFileSync(registryScriptFilePath, '');
-    const registryConfig = new RegistryConfig(appModule);
+    // const registryConfig = new RegistryConfig(appModule);
     // registryConfig.create();
     // classTree.walkMetadata(({ classes, imports, exports }) => {
     //     let registry = {};
