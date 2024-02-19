@@ -109,7 +109,7 @@ describe('Reference Specifiction Test: ', () => {
             expect(allMetadata.length).toBe(references.length);
         });
 
-        it('should return an iterator over all references including the root', () => {
+        it('should iterator over all references including the root', () => {
             const references = Array.from(Reference.nextRef());
             const hasRoot = references.some(ref => ref.metadata.isRoot);
             expect(hasRoot).toBeTrue();

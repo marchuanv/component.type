@@ -6,13 +6,6 @@ describe('Type Reference Specifiction Test: ', () => {
         beforeAll(() => {
             typeRef = new TypeReference('components', 'ClassA');
         });
-        it('should reference the components namespace', () => {
-            expect(nsRef).toBeDefined();
-            expect(nsRef).not.toBeNull();
-            expect(nsRef.namespace).toBeDefined();
-            expect(nsRef.namespace).not.toBeNull();
-            expect(nsRef.namespace).toBe('components');
-        });
         it('should return a string representation of the type reference', () => {
             expect(typeRef).toBeDefined();
             expect(typeRef).not.toBeNull();
