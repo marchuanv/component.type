@@ -1,19 +1,18 @@
 {
-    "name": "component.registry",
-    "description": "generates registry files from libraries",
+    "name": "component.reference",
+    "description": "The Reference class manages references with unique identifiers, namespaces, associated references, and metadata, providing methods for retrieval and association, as well as iteration and searching based on metadata.",
     "version": "1.0.0",
     "author": "Marchuan Van Der Merwe",
     "type": "module",
-    "main": "index.mjs",
+    "main": "registry.mjs",
     "license": "LGPL-3.0-or-later",
     "engines": {
         "node": "18.16.1",
         "npm": "9.5.1"
     },
     "keywords": [
-        "generate",
-        "import",
-        "export"
+        "reference",
+        "type"
     ],
     "files": [
         "lib"
@@ -24,12 +23,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/marchuanv/component.registry.git"
+        "url": "git+https://github.com/marchuanv/component.reference.git"
     },
     "bugs": {
-        "url": "https://github.com/marchuanv/component.registry/issues"
+        "url": "https://github.com/marchuanv/component.reference/issues"
     },
-    "homepage": "https://github.com/marchuanv/component.registry#readme",
+    "homepage": "https://github.com/marchuanv/component.reference#readme",
     "dependencies": {
         "utils": "marchuanv/utils"
     }
