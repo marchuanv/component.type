@@ -1,4 +1,4 @@
-import { Reference } from '../../utils/registry.mjs';
+import { Reference } from '../registry.mjs';
 describe('Reference Specifiction Test: ', () => {
     describe('when creating a reference given an empty namespace', () => {
         let refId = null;

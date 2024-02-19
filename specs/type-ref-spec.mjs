@@ -1,4 +1,4 @@
-import { TypeReference } from '../../utils/registry.mjs';
+import { TypeReference } from '../registry.mjs';
 describe('Type Reference Specifiction Test: ', () => {
     describe('when creating a valid type reference', () => {
         let typeRef = null;

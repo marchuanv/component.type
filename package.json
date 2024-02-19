@@ -18,8 +18,7 @@
         "lib"
     ],
     "scripts": {
-        "test": "node specs/index.mjs",
-        "start": "node index.mjs"
+        "test": "node specs/index.mjs"
     },
     "repository": {
         "type": "git",
