@@ -1,5 +1,3 @@
-import { Reference } from './lib/reference.mjs';
-export { GUID, Specs } from 'utils';
-export { TypeReference } from './lib/type-ref.mjs';
-export { Reference };
-
+export { sha1 } from 'js-sha1';
+export { Specs } from 'utils';
+export { GUID } from './lib/guid.mjs';

@@ -1,6 +1,6 @@
 {
-    "name": "component.reference",
-    "description": "The Reference class manages references with unique identifiers, namespaces, associated references, and metadata, providing methods for retrieval and association, as well as iteration and searching based on metadata.",
+    "name": "component.uuid",
+    "description": "The following class represents a GUID (Globally Unique Identifier) object, providing functionality for creating and validating GUIDs based on provided metadata.",
     "version": "1.0.0",
     "author": "Marchuan Van Der Merwe",
     "type": "module",
@@ -11,8 +11,8 @@
         "npm": "9.5.1"
     },
     "keywords": [
-        "reference",
-        "type"
+        "guid",
+        "uuid"
     ],
     "files": [
         "lib"
@@ -22,13 +22,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/marchuanv/component.reference.git"
+        "url": "git+https://github.com/marchuanv/component.uuid.git"
     },
     "bugs": {
-        "url": "https://github.com/marchuanv/component.reference/issues"
+        "url": "https://github.com/marchuanv/component.uuid/issues"
     },
-    "homepage": "https://github.com/marchuanv/component.reference#readme",
+    "homepage": "https://github.com/marchuanv/component.uuid#readme",
     "dependencies": {
-        "utils": "marchuanv/utils"
+        "utils": "marchuanv/utils",
+        "js-sha1": "^0.7.0"
     }
 }
