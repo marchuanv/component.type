@@ -30,6 +30,6 @@
     "dependencies": {
         "component.namespace": "marchuanv/component.namespace",
         "component.uuid": "marchuanv/component.uuid",
-        "utils": "marchuanv/utils"
+        "component.specs": "marchuanv/component.specs"
     }
 }
