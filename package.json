@@ -1,5 +1,5 @@
 {
-    "name": "component.namespace",
+    "name": "component.type",
     "description": "",
     "version": "1.0.0",
     "author": "Marchuan Van Der Merwe",
@@ -11,8 +11,7 @@
         "npm": "9.5.1"
     },
     "keywords": [
-        "namespace",
-        "uuid"
+        "type"
     ],
     "files": [
         "lib"
@@ -22,13 +21,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/marchuanv/component.namespace.git"
+        "url": "git+https://github.com/marchuanv/component.type.git"
     },
     "bugs": {
-        "url": "https://github.com/marchuanv/component.namespace/issues"
+        "url": "https://github.com/marchuanv/component.type/issues"
     },
-    "homepage": "https://github.com/marchuanv/component.namespace#readme",
+    "homepage": "https://github.com/marchuanv/component.type#readme",
     "dependencies": {
+        "component.namespace": "marchuanv/component.namespace",
         "component.uuid": "marchuanv/component.uuid",
         "utils": "marchuanv/utils"
     }

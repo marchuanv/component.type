@@ -1,3 +1,5 @@
-export { Specs } from 'utils';
+export { Namespace } from 'component.namespace';
 export { GUID } from 'component.uuid';
-export { Namespace } from './lib/namespace.mjs';
+export { Specs } from 'utils';
+export { Type } from './lib/type.mjs';
+
