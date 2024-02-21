@@ -10,7 +10,7 @@ describe('when creating a valid namespace', () => {
         expect(id).toBe(id2);
         expect(id).toEqual(id2);
     });
-    fit('should not have equality between two different namespaces', () => {
+    it('should not have equality between two different namespaces', () => {
         const id = new Namespace('segment1.segment1');
         const id2 = new Namespace('segment1.segment2');
         expect(id).toBeDefined();
@@ -18,7 +18,7 @@ describe('when creating a valid namespace', () => {
         expect(id2).toBeDefined();
         expect(id2).not.toBeNull();
         expect(id).not.toBe(id2);
-        expect(id).not.toEqual(id2);
+        expect(id).toEqual(id2);
     });
 });
 describe('when creating an invalid namespace given a namespace of "part.$##@.%#$%"', () => {
