@@ -12,7 +12,7 @@ describe('when creating types given the same namespaces', () => {
         expect(typeA).toEqual(typeB);
     });
 });
-describe(`when getting a type that does exist given the common namespace and ${String.name} class`, () => {
+describe(`when getting a type that does exist given a common namespace and ${String.name} class`, () => {
     let type = null;
     beforeAll(() => {
         type = Type.get({ typeName: String.name });
