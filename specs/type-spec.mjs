@@ -24,6 +24,17 @@ describe(`when getting a type that does exist given a ${String.name}`, () => {
         expect(type).toBe(String);
     });
 });
+describe(`when getting a type that does exist given a ${String.name}`, () => {
+    let exists = null;
+    beforeAll(() => {
+        exists = Type.has(String.name);
+    });
+    it(`should return true`, () => {
+        expect(exists).toBeDefined();
+        expect(exists).not.toBeNull();
+        expect(exists).toBeTrue();
+    });
+});
 describe(`when getting a type that does not exist given the common namespace and ${UnknownClass.name} class`, () => {
     let error = null;
     beforeAll(() => {
