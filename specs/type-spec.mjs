@@ -1,5 +1,6 @@
 import { Type } from '../registry.mjs';
 class ClassA { }
+class UnknownClass { }
 describe('when creating types given the same namespaces', () => {
     it('should have equality', () => {
         const typeA = new Type('segment.segment1', ClassA);
@@ -12,24 +13,22 @@ describe('when creating types given the same namespaces', () => {
         expect(typeA).toEqual(typeB);
     });
 });
-describe(`when getting a type that does exist given a common namespace and ${String.name} class`, () => {
+describe(`when getting a type that does exist given a ${String.name}`, () => {
     let type = null;
     beforeAll(() => {
-        type = Type.get({ typeName: String.name });
+        type = Type.get(String.name);
     });
-    it('should return an instance of type', () => {
+    it(`should return an instance of ${String.name}`, () => {
         expect(type).toBeDefined();
         expect(type).not.toBeNull();
-        expect(type).toBeInstanceOf(Type);
+        expect(type).toBe(String);
     });
 });
-class UnknownClass { }
 describe(`when getting a type that does not exist given the common namespace and ${UnknownClass.name} class`, () => {
     let error = null;
-    let criteria = { typeName: UnknownClass.name };
     beforeAll(() => {
         try {
-            Type.get(criteria);
+            Type.get(UnknownClass.name);
         } catch (err) {
             error = err;
         }
@@ -38,6 +37,6 @@ describe(`when getting a type that does not exist given the common namespace and
         expect(error).toBeDefined();
         expect(error).not.toBeNull();
         expect(error).toBeInstanceOf(Error);
-        expect(error.message).toBe(`type was not found for criteria: ${JSON.stringify(criteria)}`);
+        expect(error.message).toBe(`${UnknownClass.name} was not found.`);
     });
 });
