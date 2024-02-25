@@ -1,6 +1,5 @@
 import { Type } from '../registry.mjs';
 class ClassA { }
-class ClassB { }
 class UnknownClass { }
 class TestType extends Type {}
 describe(`when creating in instance of the ${Type.name} class given that the target is ${ClassA.name}`, () => {
@@ -11,12 +10,18 @@ describe(`when creating in instance of the ${Type.name} class given that the tar
         expect(type).toBe(ClassA)
     });
 });
-describe('when creating a type given that the type already exists', () => {
+describe('when creating a type given that the type already exists but it is different', () => {
     let error = null;
     beforeAll(() => {
         try {
-            new TestType(ClassB);
-            new TestType(ClassB);
+            {
+                class ClassB { get name() { return 'ClassBV1' } }
+                new TestType(ClassB);
+            }
+            {
+                class ClassB { get name() { return 'ClassBV2' } }
+                new TestType(ClassB);
+            }
         } catch (err) {
             error = err;
         }
@@ -25,7 +30,7 @@ describe('when creating a type given that the type already exists', () => {
         expect(error).toBeDefined();
         expect(error).not.toBeNull();
         expect(error).toBeInstanceOf(Error);
-        expect(error.message).toBe(`${ClassB.name} already exists.`);
+        expect(error.message).toBe(`ClassB already exists.`);
     });
 });
 describe(`when getting a type that does exist given a ${String.name}`, () => {
