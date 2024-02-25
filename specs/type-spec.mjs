@@ -1,10 +1,11 @@
 import { Type } from '../registry.mjs';
 class ClassA { }
 class UnknownClass { }
+class TestType extends Type { }
 describe('when creating types given the same namespaces', () => {
     it('should have equality', () => {
-        const typeA = new Type('segment.segment1', ClassA);
-        const typeB = new Type('segment.segment1', ClassA);
+        const typeA = new TestType('segment.segment1', ClassA);
+        const typeB = new TestType('segment.segment1', ClassA);
         expect(typeA).toBeDefined();
         expect(typeA).not.toBeNull();
         expect(typeB).toBeDefined();
