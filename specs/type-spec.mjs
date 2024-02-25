@@ -1,17 +1,31 @@
 import { Type } from '../registry.mjs';
 class ClassA { }
+class ClassB { }
 class UnknownClass { }
 class TestType extends Type {}
-describe('when creating types given the same namespaces', () => {
-    it('should have equality', () => {
-        const typeA = new TestType(ClassA);
-        const typeB = new TestType(ClassA);
-        expect(typeA).toBeDefined();
-        expect(typeA).not.toBeNull();
-        expect(typeB).toBeDefined();
-        expect(typeB).not.toBeNull();
-        expect(typeA).toBe(typeB);
-        expect(typeA).toEqual(typeB);
+describe(`when creating in instance of the ${Type.name} class given that the target is ${ClassA.name}`, () => {
+    it('should return ClassA as the type', () => {
+        const { type } = new TestType(ClassA);
+        expect(type).toBeDefined();
+        expect(type).not.toBeNull();
+        expect(type).toBe(ClassA)
+    });
+});
+describe('when creating a type given that the type already exists', () => {
+    let error = null;
+    beforeAll(() => {
+        try {
+            new TestType(ClassB);
+            new TestType(ClassB);
+        } catch (err) {
+            error = err;
+        }
+    });
+    it('should raise an error', () => {
+        expect(error).toBeDefined();
+        expect(error).not.toBeNull();
+        expect(error).toBeInstanceOf(Error);
+        expect(error.message).toBe(`${ClassB.name} already exists.`);
     });
 });
 describe(`when getting a type that does exist given a ${String.name}`, () => {
