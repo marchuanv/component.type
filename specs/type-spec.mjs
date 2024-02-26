@@ -1,9 +1,26 @@
-import { Type } from '../registry.mjs';
-class ClassA { }
-class UnknownClass { }
-class TestType extends Type {
+import { PropertyRegEx, Type } from '../registry.mjs';
+class ClassA {
     get testId() {
+        return Property.get({ testId: null }, String);
+    }
+    set testId(value) {
+        Property.set({ testId: value }, String);
+    }
+}
+class UnknownClass { }
+class Property {
+    static get() {
         return 'testA';
+    }
+    static set() {
+        return 'testA';
+    }
+}
+class TestType extends Type {
+    constructor(target) {
+        const getterPropertyRegEx = new PropertyRegEx(`returnProperty\\.get\\(\\{[a-zA-Z0-9\\:null]+\\}\\,[\\w]+\\)`);
+        const setterPropertyRegEx = new PropertyRegEx(`Property\\.set\\(\\{[a-zA-Z0-9\\:value]+\\}\\,[\\w]+\\)`);
+        super(target, getterPropertyRegEx, setterPropertyRegEx);
     }
 }
 describe(`when creating in instance of the ${Type.name} class given that the target is ${ClassA.name}`, () => {
@@ -13,20 +30,41 @@ describe(`when creating in instance of the ${Type.name} class given that the tar
         expect(type).not.toBeNull();
         expect(type).toBe(ClassA)
     });
+    it('should capture property metadata of ClassA', () => {
+        const { propertyMetadata } = new TestType(ClassA);
+        expect(propertyMetadata).toBeDefined();
+        expect(propertyMetadata).not.toBeNull();
+        expect(propertyMetadata.length).toBeGreaterThan(0);
+    });
 });
 describe('when creating a type given that the type already exists but it is different', () => {
     let error = null;
     beforeAll(() => {
         try {
             {
-                class ClassB { get name() { return 'ClassBV1' } }
+                class ClassB {  
+                    get testId() {
+                        return Property.get({ testId: null }, String);
+                    }
+                    set testId(value) {
+                        Property.set({ testId: value }, String);
+                    }
+                }
                 new TestType(ClassB);
             }
             {
-                class ClassB { get name() { return 'ClassBV2' } }
+                class ClassB {  
+                    get testId2() {
+                        return Property.get({ testId: null }, String);
+                    }
+                    set testId2(value) {
+                        Property.set({ testId: value }, String);
+                    }
+                }
                 new TestType(ClassB);
             }
         } catch (err) {
+            console.log(err);
             error = err;
         }
     });
