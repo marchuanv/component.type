@@ -1,7 +1,11 @@
 import { Type } from '../registry.mjs';
 class ClassA { }
 class UnknownClass { }
-class TestType extends Type {}
+class TestType extends Type {
+    get testId() {
+        return 'testA';
+    }
+}
 describe(`when creating in instance of the ${Type.name} class given that the target is ${ClassA.name}`, () => {
     it('should return ClassA as the type', () => {
         const { type } = new TestType(ClassA);
