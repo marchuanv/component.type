@@ -1,10 +1,10 @@
-import { PropertyRegEx, Type } from '../registry.mjs';
+import { Type, TypeOptions } from '../registry.mjs';
 class ClassA {
     get testId() {
-        return Property.get({ testId: null }, String);
+        return Property.get({ testId: null }, String, ClassA);
     }
     set testId(value) {
-        Property.set({ testId: value }, String);
+        Property.set({ testId: value }, String, ClassA);
     }
 }
 class UnknownClass { }
@@ -18,7 +18,7 @@ class Property {
 }
 class TestType extends Type {
     constructor(target) {
-        super(target, PropertyRegEx.DefaultGetterRegEx, PropertyRegEx.DefaultSetterRegEx);
+        super(target, new TypeOptions())
     }
 }
 describe(`when creating in instance of the ${Type.name} class given that the target is ${ClassA.name}`, () => {
@@ -42,10 +42,10 @@ describe('when creating a type given that the type already exists but it is diff
             {
                 class ClassB {  
                     get testId() {
-                        return Property.get({ testId: null }, String);
+                        return Property.get({ testId: null }, String, ClassB);
                     }
                     set testId(value) {
-                        Property.set({ testId: value }, String);
+                        Property.set({ testId: value }, String, ClassB);
                     }
                 }
                 new TestType(ClassB);
@@ -53,10 +53,10 @@ describe('when creating a type given that the type already exists but it is diff
             {
                 class ClassB {  
                     get testId2() {
-                        return Property.get({ testId: null }, String);
+                        return Property.get({ testId: null }, String, ClassB);
                     }
                     set testId2(value) {
-                        Property.set({ testId: value }, String);
+                        Property.set({ testId: value }, String, ClassB);
                     }
                 }
                 new TestType(ClassB);
