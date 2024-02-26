@@ -18,9 +18,7 @@ class Property {
 }
 class TestType extends Type {
     constructor(target) {
-        const getterPropertyRegEx = new PropertyRegEx(`returnProperty\\.get\\(\\{[a-zA-Z0-9\\:null]+\\}\\,[\\w]+\\)`);
-        const setterPropertyRegEx = new PropertyRegEx(`Property\\.set\\(\\{[a-zA-Z0-9\\:value]+\\}\\,[\\w]+\\)`);
-        super(target, getterPropertyRegEx, setterPropertyRegEx);
+        super(target, PropertyRegEx.DefaultGetterRegEx, PropertyRegEx.DefaultSetterRegEx);
     }
 }
 describe(`when creating in instance of the ${Type.name} class given that the target is ${ClassA.name}`, () => {
