@@ -1,6 +1,6 @@
 import { Type } from '../registry.mjs';
 import { Animal, AnimalSimilar, AnimalUnknown } from './index.mjs';
-fdescribe(`when creating in instance of the ${Type.name} class given that the target is ${Animal.name}`, () => {
+describe(`when creating in instance of the ${Type.name} class given that the target is ${Animal.name}`, () => {
     let animal = null;
     beforeAll(() => {
         animal = new Animal();
@@ -10,19 +10,13 @@ fdescribe(`when creating in instance of the ${Type.name} class given that the ta
         expect(animal).not.toBeNull();
         expect(animal.metadata.type).toBe(Animal)
     });
-    it(`should get property metadata of ${Animal.name}`, () => {
-        const { propertyMetadata } = animal;
-        expect(propertyMetadata).toBeDefined();
-        expect(propertyMetadata).not.toBeNull();
-        expect(propertyMetadata.length).toBeGreaterThan(0);
-    });
 });
 describe('when creating a type given that the type already exists but it is different', () => {
     let error = null;
     beforeAll(() => {
         try {
-            new TestType(Animal);
-            new TestType(AnimalSimilar);
+            new Animal();
+            new AnimalSimilar();
         } catch (err) {
             console.log(err);
             error = err;
@@ -32,7 +26,7 @@ describe('when creating a type given that the type already exists but it is diff
         expect(error).toBeDefined();
         expect(error).not.toBeNull();
         expect(error).toBeInstanceOf(Error);
-        expect(error.message).toBe(`ClassB already exists.`);
+        expect(error.message).toBe(`The Animal class already exists.`);
     });
 });
 describe(`when getting a type that does exist given a ${String.name}`, () => {

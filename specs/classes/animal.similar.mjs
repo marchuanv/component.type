@@ -18,4 +18,10 @@ export class Animal extends Type {
     get vaccinationYears() {
         return super.get({ vaccinationYears: null }, Array);
     }
+    /**
+     * @returns { Array<String> }
+    */
+    get oneDifference() {
+        return super.get({ oneDifference: null }, Array);
+    }
 }
