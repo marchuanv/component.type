@@ -11,6 +11,18 @@ describe(`when creating in instance of the ${Type.name} class given that the tar
         expect(animal.metadata.type).toBe(Animal)
     });
 });
+describe(`when getting a string representation of the ${Animal.name} class.`, () => {
+    let animalStr = null;
+    beforeAll(() => {
+        const animal = new Animal();
+        animalStr = animal.toString();
+    });
+    it(`should return a string`, () => {
+        expect(animalStr).toBeDefined();
+        expect(animalStr).not.toBeNull();
+        expect(animalStr).toBe(JSON.stringify({ namespace:"component.types.metadata.animal", typeName:"Animal" }));
+    });
+});
 describe('when creating a type given that the type already exists but it is different', () => {
     let error = null;
     beforeAll(() => {
