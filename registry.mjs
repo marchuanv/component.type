@@ -1,7 +1,9 @@
-import { TypeOptions, PropertyRegEx } from './lib/type-options.mjs';
+import { Properties, PropertyOptions } from 'component.property';
+import { TypeOptions } from './lib/type.options.mjs';
 export { Namespace } from 'component.namespace';
 export { Specs } from 'component.specs';
 export { GUID } from 'component.uuid';
+export { TypeMetadata } from './lib/type.metadata.mjs';
 export { Type } from './lib/type.mjs';
-export { TypeOptions, PropertyRegEx }
+export { Properties, PropertyOptions, TypeOptions };
 

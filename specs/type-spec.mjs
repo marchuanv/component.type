@@ -1,35 +1,17 @@
-import { Type, TypeOptions } from '../registry.mjs';
-class ClassA {
-    get testId() {
-        return Property.get({ testId: null }, String, ClassA);
-    }
-    set testId(value) {
-        Property.set({ testId: value }, String, ClassA);
-    }
-}
-class UnknownClass { }
-class Property {
-    static get() {
-        return 'testA';
-    }
-    static set() {
-        return 'testA';
-    }
-}
-class TestType extends Type {
-    constructor(target) {
-        super(target, new TypeOptions())
-    }
-}
-describe(`when creating in instance of the ${Type.name} class given that the target is ${ClassA.name}`, () => {
-    it('should return ClassA as the type', () => {
-        const { type } = new TestType(ClassA);
-        expect(type).toBeDefined();
-        expect(type).not.toBeNull();
-        expect(type).toBe(ClassA)
+import { Type } from '../registry.mjs';
+import { Animal, AnimalSimilar, AnimalUnknown } from './index.mjs';
+fdescribe(`when creating in instance of the ${Type.name} class given that the target is ${Animal.name}`, () => {
+    let animal = null;
+    beforeAll(() => {
+        animal = new Animal();
     });
-    it('should capture property metadata of ClassA', () => {
-        const { propertyMetadata } = new TestType(ClassA);
+    it(`should have ${Animal.name} as the type`, () => {
+        expect(animal).toBeDefined();
+        expect(animal).not.toBeNull();
+        expect(animal.metadata.type).toBe(Animal)
+    });
+    it(`should get property metadata of ${Animal.name}`, () => {
+        const { propertyMetadata } = animal;
         expect(propertyMetadata).toBeDefined();
         expect(propertyMetadata).not.toBeNull();
         expect(propertyMetadata.length).toBeGreaterThan(0);
@@ -39,28 +21,8 @@ describe('when creating a type given that the type already exists but it is diff
     let error = null;
     beforeAll(() => {
         try {
-            {
-                class ClassB {  
-                    get testId() {
-                        return Property.get({ testId: null }, String, ClassB);
-                    }
-                    set testId(value) {
-                        Property.set({ testId: value }, String, ClassB);
-                    }
-                }
-                new TestType(ClassB);
-            }
-            {
-                class ClassB {  
-                    get testId2() {
-                        return Property.get({ testId: null }, String, ClassB);
-                    }
-                    set testId2(value) {
-                        Property.set({ testId: value }, String, ClassB);
-                    }
-                }
-                new TestType(ClassB);
-            }
+            new TestType(Animal);
+            new TestType(AnimalSimilar);
         } catch (err) {
             console.log(err);
             error = err;
@@ -95,11 +57,11 @@ describe(`when getting a type that does exist given a ${String.name}`, () => {
         expect(exists).toBeTrue();
     });
 });
-describe(`when getting a type that does not exist given the common namespace and ${UnknownClass.name} class`, () => {
+describe(`when getting a type that does not exist given the common namespace and ${AnimalUnknown.name} class`, () => {
     let error = null;
     beforeAll(() => {
         try {
-            Type.get(UnknownClass.name);
+            Type.get(AnimalUnknown.name);
         } catch (err) {
             error = err;
         }
@@ -108,6 +70,6 @@ describe(`when getting a type that does not exist given the common namespace and
         expect(error).toBeDefined();
         expect(error).not.toBeNull();
         expect(error).toBeInstanceOf(Error);
-        expect(error.message).toBe(`${UnknownClass.name} was not found.`);
+        expect(error.message).toBe(`${AnimalUnknown.name} was not found.`);
     });
 });
