@@ -1,5 +1,5 @@
 import { Type } from '../registry.mjs';
-import { Animal, AnimalSimilar, AnimalUnknown } from './index.mjs';
+import { Animal, AnimalSimilar, AnimalUnknown, Dog } from './index.mjs';
 describe(`when creating in instance of the ${Type.name} class given that the target is ${Animal.name}`, () => {
     let animal = null;
     beforeAll(() => {
@@ -8,7 +8,20 @@ describe(`when creating in instance of the ${Type.name} class given that the tar
     it(`should have ${Animal.name} as the type`, () => {
         expect(animal).toBeDefined();
         expect(animal).not.toBeNull();
-        expect(animal.metadata.type).toBe(Animal)
+        expect(animal.metadata.type).toBe(Animal);
+    });
+});
+describe(`when creating in instance of the ${Type.name} class given that the target is ${Dog.name} that extends the ${Animal.name} class`, () => {
+    let dog = null;
+    beforeAll(() => {
+        dog = new Dog();
+    });
+    it(`should have ${Dog.name} as the type`, () => {
+        expect(dog).toBeDefined();
+        expect(dog).not.toBeNull();
+        expect(dog.metadata.type).toBe(Dog);
+        expect(dog.metadata.typeExtended).toContain(Animal);
+        expect(dog.metadata.typeExtended).toContain(Dog);
     });
 });
 describe('when creating a type given that the type already exists but it is different', () => {
