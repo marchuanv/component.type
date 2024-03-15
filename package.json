@@ -28,7 +28,6 @@
     },
     "homepage": "https://github.com/marchuanv/component.type#readme",
     "dependencies": {
-        "component.namespace": "marchuanv/component.namespace",
         "component.uuid": "marchuanv/component.uuid",
         "component.specs": "marchuanv/component.specs",
         "component.property": "marchuanv/component.property",
