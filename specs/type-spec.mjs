@@ -14,6 +14,7 @@ describe(`when creating in instance of the ${Dog.name} class given that it exten
         expect(dog).not.toBeNull();
         dog.associate(food);
         expect(dog.associations).toContain(Food, `could not associate ${Dog.name} with ${Food.name}.`);
+        expect(food.associations).toContain(Dog, `could not associate ${Food.name} with ${Dog.name}.`);
     });
     it(`should associate the ${Food.name} type with the ${Dog.name} class`, () => {
         const animal = new Animal();
