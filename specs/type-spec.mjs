@@ -13,13 +13,13 @@ describe(`when creating in instance of the ${Dog.name} class given that it exten
         expect(dog).toBeDefined();
         expect(dog).not.toBeNull();
         dog.associate(food);
-        expect(dog.associations).toContain(Food);
+        expect(dog.associations).toContain(Food, `could not associate ${Dog.name} with ${Food.name}.`);
     });
-    it(`should associate the ${Food.name} class with the ${Dog.name} class`, () => {
-        const dog = new Dog();
-        expect(dog).toBeDefined();
-        expect(dog).not.toBeNull();
-        dog.associate(Food);
-        expect(dog.associations).toContain(Food);
+    it(`should associate the ${Food.name} type with the ${Dog.name} class`, () => {
+        const animal = new Animal();
+        expect(animal).toBeDefined();
+        expect(animal).not.toBeNull();
+        animal.associate(Food);
+        expect(animal.associations).toContain(Food, `could not associate ${Animal.name} with ${Food.name}.`);
     });
 });
