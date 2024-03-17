@@ -1,5 +1,5 @@
-import { Type } from "../../registry.mjs";
-export class Food extends Type {
+import { TypeReference } from "../../registry.mjs";
+export class Food extends TypeReference {
     /**
      * @returns { String }
     */

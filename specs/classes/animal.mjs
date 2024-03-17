@@ -1,5 +1,5 @@
-import { Type } from "../../registry.mjs";
-export class Animal extends Properties {
+import { TypeReference } from "../../registry.mjs";
+export class Animal extends TypeReference {
     /**
      * @returns { String }
     */
