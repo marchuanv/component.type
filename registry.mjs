@@ -1,4 +1,4 @@
-export { PropertiesReference, PropertiesReferenceContext, PropertiesTypeRegister, PropertyTypeRegister } from 'component.property';
+export { PropertiesReference, PropertiesReferenceContext, PropertyReference, PropertiesTypeRegister, PropertyTypeRegister } from 'component.property';
 export { Reference, ReferenceContext, ReferenceId } from 'component.reference';
 export { Specs } from 'component.specs';
 export { GUID, Store, Type, UnknownType } from 'component.uuid';
