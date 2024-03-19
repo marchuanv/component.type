@@ -1,13 +1,13 @@
 import { TypeReferenceContext, TypeRegisterEntry } from '../registry.mjs';
 import { Animal, Dog, Food } from './index.mjs';
 const dogTypeRegisterEntry = new TypeRegisterEntry(Dog, [{
-    propertyName: 'name', propertyType: String 
+    propertyName: 'name', propertyType: String
 }]);
 const foodTypeRegisterEntry = new TypeRegisterEntry(Food, [{
-    propertyName: 'name', propertyType: String 
+    propertyName: 'name', propertyType: String
 }]);
 const animalTypeRegisterEntry = new TypeRegisterEntry(Animal, [{
-    propertyName: 'type', propertyType: String 
+    propertyName: 'type', propertyType: String
 }]);
 describe(`when creating in instance of the ${Dog.name} class given that it extends the ${Animal.name} class`, () => {
     it(`should have the ${Animal.name} and ${Dog.name} extended classes`, () => {
