@@ -6,7 +6,7 @@ new Type(Food);
 new Type(Dog);
 
 const animalTypeRegisterEntry = new TypeRegisterEntry(Animal);
-const dogTypeRegisterEntry = new TypeRegisterEntry(Dog, [Animal, Food]);
+const dogTypeRegisterEntry = new TypeRegisterEntry(Dog);
 const foodTypeRegisterEntry = new TypeRegisterEntry(Food);
 
 describe(`when creating in instance of the ${Dog.name} class given that it extends the ${Animal.name} class`, () => {
